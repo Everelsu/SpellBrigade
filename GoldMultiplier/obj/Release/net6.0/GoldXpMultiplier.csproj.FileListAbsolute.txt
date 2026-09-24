@@ -1,0 +1,9 @@
+C:\Dev\SpellBrigade\GoldMultiplier\bin\Release\net6.0\GoldXpMultiplier.dll
+C:\Dev\SpellBrigade\GoldMultiplier\obj\Release\net6.0\GoldXpMultiplier.csproj.AssemblyReference.cache
+C:\Dev\SpellBrigade\GoldMultiplier\obj\Release\net6.0\GoldXpMultiplier.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\SpellBrigade\GoldMultiplier\obj\Release\net6.0\GoldXpMultiplier.AssemblyInfoInputs.cache
+C:\Dev\SpellBrigade\GoldMultiplier\obj\Release\net6.0\GoldXpMultiplier.AssemblyInfo.cs
+C:\Dev\SpellBrigade\GoldMultiplier\obj\Release\net6.0\GoldXpMultiplier.csproj.CoreCompileInputs.cache
+C:\Dev\SpellBrigade\GoldMultiplier\obj\Release\net6.0\GoldXpMultiplier.dll
+C:\Dev\SpellBrigade\GoldMultiplier\obj\Release\net6.0\refint\GoldXpMultiplier.dll
+C:\Dev\SpellBrigade\GoldMultiplier\obj\Release\net6.0\ref\GoldXpMultiplier.dll

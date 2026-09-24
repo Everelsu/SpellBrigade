@@ -1,0 +1,9 @@
+C:\Dev\SpellBrigade\RunCustomizer\bin\Release\net6.0\RunCustomizer.dll
+C:\Dev\SpellBrigade\RunCustomizer\obj\Release\net6.0\RunCustomizer.csproj.AssemblyReference.cache
+C:\Dev\SpellBrigade\RunCustomizer\obj\Release\net6.0\RunCustomizer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\SpellBrigade\RunCustomizer\obj\Release\net6.0\RunCustomizer.AssemblyInfoInputs.cache
+C:\Dev\SpellBrigade\RunCustomizer\obj\Release\net6.0\RunCustomizer.AssemblyInfo.cs
+C:\Dev\SpellBrigade\RunCustomizer\obj\Release\net6.0\RunCustomizer.csproj.CoreCompileInputs.cache
+C:\Dev\SpellBrigade\RunCustomizer\obj\Release\net6.0\RunCustomizer.dll
+C:\Dev\SpellBrigade\RunCustomizer\obj\Release\net6.0\refint\RunCustomizer.dll
+C:\Dev\SpellBrigade\RunCustomizer\obj\Release\net6.0\ref\RunCustomizer.dll

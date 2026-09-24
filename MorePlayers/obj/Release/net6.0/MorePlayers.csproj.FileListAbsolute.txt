@@ -1,0 +1,9 @@
+C:\Dev\SpellBrigade\MorePlayers\bin\Release\net6.0\MorePlayers.dll
+C:\Dev\SpellBrigade\MorePlayers\obj\Release\net6.0\MorePlayers.csproj.AssemblyReference.cache
+C:\Dev\SpellBrigade\MorePlayers\obj\Release\net6.0\MorePlayers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\SpellBrigade\MorePlayers\obj\Release\net6.0\MorePlayers.AssemblyInfoInputs.cache
+C:\Dev\SpellBrigade\MorePlayers\obj\Release\net6.0\MorePlayers.AssemblyInfo.cs
+C:\Dev\SpellBrigade\MorePlayers\obj\Release\net6.0\MorePlayers.csproj.CoreCompileInputs.cache
+C:\Dev\SpellBrigade\MorePlayers\obj\Release\net6.0\MorePlayers.dll
+C:\Dev\SpellBrigade\MorePlayers\obj\Release\net6.0\refint\MorePlayers.dll
+C:\Dev\SpellBrigade\MorePlayers\obj\Release\net6.0\ref\MorePlayers.dll

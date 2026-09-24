@@ -1,0 +1,71 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>SkipIntro</AssemblyName>
+    <RootNamespace>SkipIntro</RootNamespace>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>none</DebugType>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GameRoot>C:\Program Files (x86)\Steam\steamapps\common\The Spell Brigade</GameRoot>
+    <MelonNet6>$(GameRoot)\MelonLoader\net6</MelonNet6>
+    <InteropRoot>$(GameRoot)\MelonLoader\Il2CppAssemblies</InteropRoot>
+  </PropertyGroup>
+
+  <ItemGroup Label="MelonLoader core">
+    <Reference Include="MelonLoader">
+      <HintPath>$(MelonNet6)\MelonLoader.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppInterop.Runtime">
+      <HintPath>$(MelonNet6)\Il2CppInterop.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppInterop.Common">
+      <HintPath>$(MelonNet6)\Il2CppInterop.Common.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(MelonNet6)\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Label="UnityEngine interop">
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(InteropRoot)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Label="Game interop">
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>$(InteropRoot)\Il2Cppmscorlib.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(InteropRoot)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppRuntime">
+      <HintPath>$(InteropRoot)\Il2CppRuntime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Автокопирование плагина в Mods\ при сборке -->
+  <Target Name="CopyToMods" AfterTargets="Build">
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll"
+          DestinationFolder="$(GameRoot)\Mods"
+          SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>
