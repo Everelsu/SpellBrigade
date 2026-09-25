@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
-using HarmonyLib;
 using Il2Cpp;
 using MelonLoader;
+using SpellBrigade.Shared;
 
 [assembly: MelonInfo(typeof(SkipIntro.SkipIntroMod), "Skip Intro", "1.0.0", "Relsev")]
 [assembly: MelonGame("BoltBlasterGames", "TheSpellBrigade")]
@@ -14,34 +13,23 @@ namespace SkipIntro;
 public class SkipIntroMod : MelonMod
 {
     public static MelonLogger.Instance Log;
+    private static MelonPreferences_Entry<bool> _enabled;
 
     public override void OnInitializeMelon()
     {
         Log = LoggerInstance;
-        try
-        {
-            // Хук именно на Start: его вызывает сам Unity, поэтому он не может быть встроен
-            // в другой метод. OpeningFlow.Execute IL2CPP встроил прямо в Start —
-            // хук на Execute никогда не срабатывает.
-            MethodInfo original = AccessTools.Method(typeof(OpeningFlowManager), nameof(OpeningFlowManager.Start))
-                                  ?? throw new MissingMethodException(nameof(OpeningFlowManager), nameof(OpeningFlowManager.Start));
-
-            // IL2CPP склеивает одинаковый машинный код разных методов: хук такого метода
-            // задел бы и все его «двойники». Такие методы не трогаем.
-            var sharedWith = SharedCodeGuard.FindMethodsSharingCode(original);
-            if (sharedWith.Count > 0)
-            {
-                Log.Warning($"skipped OpeningFlowManager.Start: its native code is shared with {sharedWith.Count} other method(s), intro stays");
-                return;
-            }
-
-            HarmonyInstance.Patch(original, postfix: new HarmonyMethod(AccessTools.Method(typeof(SkipIntroMod), nameof(StartPostfix))));
+        // UserData/MelonPreferences.cfg, секция [SkipIntro]; в Mod Menu — сам, без кода
+        var category = MelonPreferences.CreateCategory("SkipIntro", "Skip Intro");
+        _enabled = category.CreateEntry("Enabled", true, "Skip Intro", "Пропускать логотипы и вступительные ролики");
+        category.SaveToFile(false);
+        // Хук именно на Start: его вызывает сам Unity, поэтому он не может быть встроен
+        // в другой метод. OpeningFlow.Execute IL2CPP встроил прямо в Start —
+        // хук на Execute никогда не срабатывает.
+        if (Hooks.Patch(HarmonyInstance, Log, typeof(OpeningFlowManager), nameof(OpeningFlowManager.Start),
+                        typeof(SkipIntroMod), postfix: nameof(StartPostfix)))
             Log.Msg("ready — logos and intro videos are skipped");
-        }
-        catch (Exception e)
-        {
-            Log.Error($"failed to hook OpeningFlowManager.Start, intro stays: {e.GetType().Name}: {e.Message}");
-        }
+        else
+            Log.Warning("intro stays");
     }
 
     // Сцена Opening: логотипы → видео BoltBlasterGames → видео VAF → (для Китая) плашка
@@ -51,6 +39,7 @@ public class SkipIntroMod : MelonMod
     // отдельная сцена, его не трогаем.
     private static void StartPostfix(OpeningFlowManager __instance)
     {
+        if (!_enabled.Value) return;
         MelonCoroutines.Start(SkipAll(__instance));
     }
 

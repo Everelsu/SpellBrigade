@@ -92,6 +92,7 @@ internal static class RunSummaryUi
     {
         try
         {
+            if (!GoldXpMod.Reveal) return; // без анимации экран сразу показывает умноженное
             var ui = __instance.earnedGoldUI;
             var gold = ui?.earnedGold;
             if (gold == null) return;
@@ -112,6 +113,7 @@ internal static class RunSummaryUi
     {
         try
         {
+            if (!GoldXpMod.Reveal) return;
             if (!(_xpModded > 0) || !(_xpVanilla > 0) || Math.Abs(_xpModded - _xpVanilla) < 0.5) return;
             float vanilla = (float)(xpEarned * (_xpVanilla / _xpModded));
             if (Math.Round(vanilla) == Math.Round(xpEarned)) return;

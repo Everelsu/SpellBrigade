@@ -1,17 +1,36 @@
 {
   "version": 4,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "ModMenu/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ModMenu.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ModMenu.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "ModMenu/1.0.0": {
+      "type": "project",
+      "path": "../ModMenu/ModMenu.csproj",
+      "msbuildProject": "../ModMenu/ModMenu.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "ModMenu >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\egord\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.1",
+    "version": "1.0.2",
     "restore": {
       "projectUniqueName": "C:\\Dev\\SpellBrigade\\Keybinds\\KeybindsUnlocked.csproj",
       "projectName": "KeybindsUnlocked",
@@ -34,7 +53,11 @@
         "net6.0": {
           "framework": "net6.0",
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Dev\\SpellBrigade\\ModMenu\\ModMenu.csproj": {
+              "projectPath": "C:\\Dev\\SpellBrigade\\ModMenu\\ModMenu.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

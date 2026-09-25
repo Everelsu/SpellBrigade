@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GoldXpMultiplier")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("2.5.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.5.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.5.0+5a178bfa2374ae6beea5d6ae05a9fbd65cd12c0d")]
 [assembly: System.Reflection.AssemblyProductAttribute("GoldXpMultiplier")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GoldXpMultiplier")]
 [assembly: System.Reflection.AssemblyVersionAttribute("2.5.0.0")]

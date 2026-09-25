@@ -1,0 +1,120 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>PinnedChallenges</AssemblyName>
+    <RootNamespace>PinnedChallenges</RootNamespace>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>none</DebugType>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GameRoot>C:\Program Files (x86)\Steam\steamapps\common\The Spell Brigade</GameRoot>
+    <MelonNet6>$(GameRoot)\MelonLoader\net6</MelonNet6>
+    <InteropRoot>$(GameRoot)\MelonLoader\Il2CppAssemblies</InteropRoot>
+  </PropertyGroup>
+
+  <!-- Mod Menu необязателен: dll не копируется, раздел регистрируется только если он установлен -->
+  <ItemGroup Label="Mod Menu">
+    <ProjectReference Include="..\ModMenu\ModMenu.csproj" Private="false" />
+  </ItemGroup>
+
+  <ItemGroup Label="Shared code">
+    <Compile Include="..\Shared\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Label="MelonLoader core">
+    <Reference Include="MelonLoader">
+      <HintPath>$(MelonNet6)\MelonLoader.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppInterop.Runtime">
+      <HintPath>$(MelonNet6)\Il2CppInterop.Runtime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppInterop.Common">
+      <HintPath>$(MelonNet6)\Il2CppInterop.Common.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(MelonNet6)\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Label="UnityEngine interop">
+    <Reference Include="UnityEngine">
+      <HintPath>$(InteropRoot)\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(InteropRoot)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(InteropRoot)\UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>$(InteropRoot)\UnityEngine.UIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(InteropRoot)\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(InteropRoot)\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>$(InteropRoot)\UnityEngine.AnimationModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(InteropRoot)\Unity.TextMeshPro.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>$(InteropRoot)\Unity.InputSystem.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.Localization">
+      <HintPath>$(InteropRoot)\Unity.Localization.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Label="Game interop">
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>$(InteropRoot)\Il2Cppmscorlib.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(InteropRoot)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Il2CppRuntime">
+      <HintPath>$(InteropRoot)\Il2CppRuntime.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\*.png" LogicalName="%(Filename).png" />
+  </ItemGroup>
+
+  <!-- Автокопирование плагина в Mods\ при сборке -->
+  <Target Name="CopyToMods" AfterTargets="Build">
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll"
+          DestinationFolder="$(GameRoot)\Mods"
+          SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

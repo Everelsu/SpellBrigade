@@ -1,0 +1,93 @@
+[center][size=6][b][color=#f5c542]Mod Menu[/color][/b][/size]
+[size=3][i]One place for every mod's settings — right in the game's Options.[/i][/size]
+
+[size=2]Version 1.0.0 · The Spell Brigade 1.1.4 · MelonLoader 0.7[/size][/center]
+
+[line]
+
+[size=5][b][color=#f5c542]Features[/color][/b][/size]
+
+[list]
+[*][b]Options → Mods[/b] — a new tab next to Video, Audio and Controls, in the main menu and the pause menu. Built from the game's own selectors, buttons and highlights, so it looks, sounds and navigates like the rest of the game.
+[*][b]Foldable sections[/b] — one per mod. Click a mod's name (or press Enter / A) to open it; the menu remembers what you left open.
+[*][b]Search[/b] — type a setting or a mod name, matches are highlighted. [b]Ctrl+F[/b] jumps into the field, [b]Enter[/b] to the first result. While you type, the game ignores the keyboard.
+[*][b]Reset to default[/b] — a ↻ icon appears next to every changed setting, [b]Defaults ↻[/b] next to a mod's name resets the whole mod. [b]Delete[/b] works on the selected row.
+[*][b]Mouse wheel on every selector[/b] — hover any [b]‹ value ›[/b] selector and scroll to change it. Works in the game's own menus too.
+[*][b]Works with any mod[/b] — every MelonPreferences setting shows up automatically: on/off switches, numbers limited to their range, lists. No changes to other mods needed.
+[*][b]16 languages[/b] — follows the game's language.
+[/list]
+
+[line]
+
+[size=5][b][color=#f5c542]Installation[/color][/b][/size]
+
+[list=1]
+[*]Install [url=https://github.com/LavaGang/MelonLoader/releases]MelonLoader[/url] (0.7.x) for The Spell Brigade and launch the game once.
+[*]Put [b]ModMenu.dll[/b] into [font=Courier New]<Game folder>\Mods\[/font]
+[*]Launch the game → [b]Options → Mods[/b].
+[/list]
+
+[line]
+
+[size=5][b][color=#f5c542]Works best with[/color][/b][/size]
+
+My other mods add their own sections with translated names: [b]Gold & XP Multiplier[/b] (its "Multipliers" tab moves here), [b]Run Customizer[/b], [b]More Players[/b], [b]Pinned Challenges[/b], [b]Keybinds Unlocked[/b] and [b]Skip Intro[/b]. They still work without Mod Menu.
+
+[line]
+
+[size=5][b][color=#f5c542]For mod authors[/color][/b][/size]
+
+Your MelonPreferences show up with no code. For more — translated labels, presets, buttons in a row, your own UI in a row — there is a small open API, with an optional dependency so your mod keeps working without Mod Menu. See the [url=https://github.com/Everelsu/SpellBrigade/tree/main/ModMenu]README on GitHub[/url].
+
+[line]
+
+[size=5][b][color=#f5c542]FAQ[/color][/b][/size]
+
+[b]Where are the settings saved?[/b]
+Where each mod keeps them — usually [font=Courier New]<Game folder>\UserData\MelonPreferences.cfg[/font]. Mod Menu only remembers which sections are open.
+
+[b]Does it work in co-op?[/b]
+Yes. It's a local menu; other players don't need it.
+
+[b]Can I use it with a controller?[/b]
+Yes — up/down to move, left/right to change a value, A to open a section. Search needs a keyboard.
+
+[b]How do I uninstall?[/b]
+Delete [b]ModMenu.dll[/b] from the Mods folder. Your settings stay.
+
+[line]
+
+[size=5][b][color=#f5c542]Changelog[/color][/b][/size]
+
+[b]1.0.0[/b]
+[list]
+[*]Initial release
+[/list]
+
+[line]
+
+[spoiler]
+[size=5][b]Описание на русском[/b][/size]
+
+[b]Mod Menu[/b] — настройки всех модов в одном месте, прямо в меню игры: [b]Настройки → Моды[/b].
+
+[b]Возможности[/b]
+[list]
+[*][b]Вкладка «Моды»[/b] рядом с «Видео», «Аудио» и «Управлением» — в главном меню и в паузе. Собрана из родных переключателей, кнопок и подсветки игры.
+[*][b]Сворачиваемые разделы[/b] — по одному на мод. Клик по названию (или Enter / A) открывает раздел, меню запоминает, что было открыто.
+[*][b]Поиск[/b] по настройкам и названиям модов с подсветкой найденного. Ctrl+F — в поиск, Enter — к первому результату. Пока печатаете, игра клавиатуру не слышит.
+[*][b]Сброс[/b] — значок ↻ у каждой изменённой настройки, «По умолчанию ↻» у названия мода сбрасывает весь мод. Delete на выбранной строке тоже сбрасывает.
+[*][b]Колесо мыши[/b] над любым переключателем «‹ значение ›» меняет значение — и в меню игры тоже.
+[*][b]С любым модом[/b] — настройки MelonPreferences появляются сами, без изменений в модах.
+[*][b]16 языков[/b] — меню говорит на языке игры.
+[/list]
+
+[b]Установка[/b]
+[list=1]
+[*]Установите [url=https://github.com/LavaGang/MelonLoader/releases]MelonLoader[/url] 0.7.x и один раз запустите игру.
+[*]Положите [b]ModMenu.dll[/b] в папку [font=Courier New]<папка игры>\Mods\[/font].
+[*]Запустите игру → [b]Настройки → Моды[/b].
+[/list]
+
+[b]Удаление:[/b] удалите DLL из папки Mods — настройки модов останутся.
+[/spoiler]

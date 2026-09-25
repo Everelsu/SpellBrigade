@@ -1,0 +1,11 @@
+C:\Dev\SpellBrigade\ModMenu\bin\Release\net6.0\ModMenu.dll
+C:\Dev\SpellBrigade\ModMenu\bin\Release\net6.0\ModMenu.xml
+C:\Dev\SpellBrigade\ModMenu\obj\Release\net6.0\ModMenu.csproj.AssemblyReference.cache
+C:\Dev\SpellBrigade\ModMenu\obj\Release\net6.0\ModMenu.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\SpellBrigade\ModMenu\obj\Release\net6.0\ModMenu.AssemblyInfoInputs.cache
+C:\Dev\SpellBrigade\ModMenu\obj\Release\net6.0\ModMenu.AssemblyInfo.cs
+C:\Dev\SpellBrigade\ModMenu\obj\Release\net6.0\ModMenu.csproj.CoreCompileInputs.cache
+C:\Dev\SpellBrigade\ModMenu\obj\Release\net6.0\ModMenu.dll
+C:\Dev\SpellBrigade\ModMenu\obj\Release\net6.0\refint\ModMenu.dll
+C:\Dev\SpellBrigade\ModMenu\obj\Release\net6.0\ModMenu.xml
+C:\Dev\SpellBrigade\ModMenu\obj\Release\net6.0\ref\ModMenu.dll

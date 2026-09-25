@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Il2CppTMPro;
-using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
+using SpellBrigade.Shared;
 
 namespace MorePlayers;
 
@@ -35,68 +34,10 @@ internal static class Strings
         ["th"] = new[] { "ผู้เล่น", "ห้อง", "ผู้เล่นสูงสุด", "คุณ" },
     };
 
-    private static string[] _current;
-    private static readonly Dictionary<string, bool> FontSupport = new();
-    private static bool _subscribed;
-    private static TMP_Text _fontSample;
+    private static readonly Localizer Text = new(Keys, Table, () => MorePlayersMod.Log);
 
-    public static string Get(string key)
-    {
-        _current ??= Resolve();
-        int i = Array.IndexOf(Keys, key);
-        return i >= 0 ? _current[i] : key;
-    }
+    public static string Get(string key) => Text.Get(key);
 
     // шрифт, по которому проверяем, есть ли в нём символы языка
-    public static void UseFont(TMP_Text sample)
-    {
-        _fontSample = sample;
-        _current = null;
-        if (_subscribed) return;
-        _subscribed = true;
-        try
-        {
-            LocalizationSettings.add_SelectedLocaleChanged((Il2CppSystem.Action<Locale>)(Action<Locale>)(_ => _current = null));
-        }
-        catch (Exception e) { MorePlayersMod.Log.Warning($"[lang] can't follow language changes: {e.Message}"); }
-    }
-
-    private static string[] Resolve()
-    {
-        string code = "en";
-        try { code = LocalizationSettings.SelectedLocale?.Identifier.Code ?? "en"; } catch { }
-        string key = TableKey(code);
-        if (key != "en" && _fontSample != null && !FontHasAll(_fontSample, key)) key = "en";
-        return Table[key];
-    }
-
-    private static string TableKey(string code)
-    {
-        code = code.ToLowerInvariant().Replace('_', '-');
-        if (code.StartsWith("zh"))
-            return code.Contains("hant") || code.Contains("tw") || code.Contains("hk") ? "zh-hant" : "zh-hans";
-        if (code.StartsWith("pt")) return code.Contains("br") ? "pt-br" : "pt";
-        string lang = code.Split('-')[0];
-        return Table.ContainsKey(lang) ? lang : "en";
-    }
-
-    private static bool FontHasAll(TMP_Text sample, string key)
-    {
-        if (FontSupport.TryGetValue(key, out bool ok)) return ok;
-        ok = true;
-        try
-        {
-            var font = sample.font;
-            if (font != null)
-                foreach (var s in Table[key])
-                {
-                    foreach (char c in s)
-                        if (c > 127 && !char.IsWhiteSpace(c) && !font.HasCharacter(c, true, true)) { ok = false; break; }
-                    if (!ok) break;
-                }
-        }
-        catch { ok = true; }
-        FontSupport[key] = ok;
-        return ok;
-    }
+    public static void UseFont(TMP_Text sample) => Text.UseFont(sample);
 }

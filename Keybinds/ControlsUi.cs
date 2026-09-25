@@ -18,7 +18,9 @@ namespace KeybindsUnlocked;
 internal static class ControlsUi
 {
     private const string RootName = "KeybindsUnlocked_Root";
-    private const float CellWidth = 340f, CellHeight = 68f, RowHeight = 80f, ColumnGap = 24f, ScrollbarWidth = 10f;
+    private const float CellWidth = 340f, CellHeight = 68f, RowHeight = 80f, ColumnGap = 24f, ScrollbarWidth = 6f;
+    private const float LabelScale = 0.72f, SectionGap = 26f;
+    private static readonly Color Gold = new(0.96f, 0.78f, 0.35f);
 
     private sealed class Row
     {
@@ -86,7 +88,7 @@ internal static class ControlsUi
         {
             _subscribed = true;
             Bindings.Changed += RefreshAll;
-            Strings.LanguageChanged += RefreshAll;
+            Strings.OnLanguageChanged(RefreshAll);
         }
 
         var screen = new Screen();
@@ -134,27 +136,56 @@ internal static class ControlsUi
         scroll.verticalScrollbarVisibility = ScrollRect.ScrollbarVisibility.AutoHide;
         screen.Scroll = scroll;
 
+        // подписи одного размера (у шаблона автоподбор: короткие выходили крупнее длинных)
+        float labelSize = (label.enableAutoSizing ? label.fontSizeMax : label.fontSize) * LabelScale;
         var grid = new List<(Selectable kb, Selectable gp)>();
+        int stripe = 0;
+        bool firstSection = true;
         foreach (var row in Rows())
         {
             var rowRect = NewRect(row.IsSection ? "Section" : "Row", content);
-            rowRect.gameObject.AddComponent<LayoutElement>().preferredHeight = row.IsSection ? RowHeight + 10f : RowHeight;
+            float height = row.IsSection ? RowHeight + (firstSection ? 0f : SectionGap) : RowHeight;
+            rowRect.gameObject.AddComponent<LayoutElement>().preferredHeight = height;
 
             var text = Object.Instantiate(label.gameObject, rowRect).GetComponent<TMP_Text>();
             StripLocalization(text);
+            text.enableAutoSizing = false;
+            text.fontSize = labelSize;
+            text.textWrappingMode = TextWrappingModes.NoWrap;
+            text.overflowMode = TextOverflowModes.Ellipsis;
             var tr = text.rectTransform;
             tr.anchorMin = new Vector2(0f, 0f); tr.anchorMax = new Vector2(1f, 1f); tr.pivot = new Vector2(0f, 0.5f);
-            tr.offsetMin = Vector2.zero; tr.offsetMax = new Vector2(-(2f * CellWidth + 2f * ColumnGap), 0f);
+            tr.offsetMin = new Vector2(16f, 0f); tr.offsetMax = new Vector2(-(2f * CellWidth + 2f * ColumnGap), 0f);
             text.alignment = TextAlignmentOptions.MidlineLeft;
             string key = row.LabelKey, suffix = row.LabelSuffix;
             Strings.Bind(text, () => Strings.Get(key) + suffix);
 
             if (row.IsSection)
             {
+                // заголовок раздела: золотой, чуть крупнее, под ним тонкая линия на всю ширину
                 text.fontStyle |= FontStyles.Bold;
-                text.color = new Color(0.96f, 0.78f, 0.35f);
+                text.fontSize = labelSize * 1.05f;
+                text.color = Gold;
+                text.alignment = TextAlignmentOptions.BottomLeft;
+                tr.offsetMin = new Vector2(0f, 14f);
                 tr.offsetMax = Vector2.zero;
+                var line = NewRect("Line", rowRect).gameObject.AddComponent<Image>();
+                line.color = new Color(Gold.r, Gold.g, Gold.b, 0.25f);
+                line.raycastTarget = false;
+                var lr = line.rectTransform;
+                lr.anchorMin = Vector2.zero; lr.anchorMax = new Vector2(1f, 0f); lr.pivot = new Vector2(0.5f, 0f);
+                lr.sizeDelta = new Vector2(0f, 2f); lr.anchoredPosition = new Vector2(0f, 4f);
+                stripe = 0;
+                firstSection = false;
                 continue;
+            }
+
+            // чередующийся фон строк — глазу легче связать подпись с её клавишами
+            if (stripe++ % 2 == 1)
+            {
+                var band = rowRect.gameObject.AddComponent<Image>();
+                band.color = new Color(1f, 1f, 1f, 0.035f);
+                band.raycastTarget = false;
             }
 
             var kb = AddCell(buttonTemplate, label, rowRect, row.Keyboard, -(CellWidth + ColumnGap), screen);
@@ -182,7 +213,9 @@ internal static class ControlsUi
         var hr = hint.rectTransform;
         hr.anchorMin = new Vector2(0f, 0f); hr.anchorMax = new Vector2(1f, 1f); hr.pivot = new Vector2(0f, 0.5f);
         hr.offsetMin = new Vector2(CellWidth + ColumnGap, 0f); hr.offsetMax = Vector2.zero;
-        hint.fontSize *= 0.62f;
+        hint.enableAutoSizing = false;
+        hint.fontSize = labelSize * 0.8f;
+        hint.color = new Color(1f, 1f, 1f, 0.6f);
         hint.alignment = TextAlignmentOptions.MidlineLeft;
         hint.textWrappingMode = TextWrappingModes.Normal;
         Hints.Add(hint);
@@ -224,6 +257,7 @@ internal static class ControlsUi
                 Gamepad = new Slot("Gameplay/QuickChat", true, 0, part),
             };
         yield return R(Strings.QuickChatClose, "Gameplay/QuickChatCancel");
+        yield return R(Strings.ToggleSpells, Bindings.ModMap + "/" + Bindings.ToggleSpells);
 
         yield return Section(Strings.Menus);
         yield return Mirrored(R(Strings.NextTab, "UI/NextCategory"), "UI/NextStatCategory");
@@ -258,6 +292,7 @@ internal static class ControlsUi
             var dash = Object.Instantiate(label.gameObject, row).GetComponent<TMP_Text>();
             StripLocalization(dash);
             dash.text = "—";
+            dash.color = new Color(1f, 1f, 1f, 0.25f);
             dash.alignment = TextAlignmentOptions.Center;
             PlaceCell(dash.rectTransform, x);
             return null;
@@ -432,19 +467,25 @@ internal static class ControlsUi
         bar.anchorMin = new Vector2(1f, 0f); bar.anchorMax = new Vector2(1f, 1f); bar.pivot = new Vector2(1f, 0.5f);
         bar.offsetMin = new Vector2(-ScrollbarWidth, 110f); bar.offsetMax = new Vector2(0f, -80f);
         var track = bar.gameObject.AddComponent<Image>();
-        track.color = new Color(1f, 1f, 1f, 0.08f);
+        track.color = new Color(1f, 1f, 1f, 0.05f);
 
         var area = NewRect("Sliding Area", bar);
         Stretch(area, Vector2.zero, Vector2.zero);
         var handle = NewRect("Handle", area);
         Stretch(handle, Vector2.zero, Vector2.zero);
         var handleImage = handle.gameObject.AddComponent<Image>();
-        handleImage.color = new Color(0.96f, 0.78f, 0.35f, 0.85f);
+        handleImage.color = Color.white;
 
         var scrollbar = bar.gameObject.AddComponent<Scrollbar>();
         scrollbar.handleRect = handle;
         scrollbar.targetGraphic = handleImage;
         scrollbar.direction = Scrollbar.Direction.BottomToTop;
+        var colors = scrollbar.colors;
+        colors.normalColor = new Color(1f, 1f, 1f, 0.3f);
+        colors.highlightedColor = Gold;
+        colors.pressedColor = Gold;
+        colors.selectedColor = new Color(1f, 1f, 1f, 0.3f);
+        scrollbar.colors = colors;
         var nav = scrollbar.navigation;
         nav.mode = Navigation.Mode.None; // не перехватывать фокус у списка при управлении с клавиатуры/геймпада
         scrollbar.navigation = nav;

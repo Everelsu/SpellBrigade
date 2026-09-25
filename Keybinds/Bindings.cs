@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using MelonLoader.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -37,6 +38,28 @@ internal static class Bindings
 {
     private const string ModelName = "KeybindsUnlocked_Model";
 
+    // Свои действия мода — отдельной картой. В модель (копию набора игры) она добавляется,
+    // поэтому переназначение, сохранение и сброс работают как у действий игры; слушает её
+    // своя копия (_modAsset). id постоянные: переназначения сопоставляются по ним.
+    public const string ModMap = "KeybindsUnlocked", ToggleSpells = "ToggleSpells";
+    private const string ModMapJson = @"{
+      ""name"": ""KeybindsUnlocked"", ""id"": ""6f1d7a52-3c1e-4b8e-9d57-0d3c2b6a9e11"",
+      ""actions"": [
+        { ""name"": ""ToggleSpells"", ""type"": ""Button"", ""id"": ""8a2f4c61-5b7d-4e19-a3c8-2e6d9f1b7c42"",
+          ""expectedControlType"": ""Button"", ""processors"": """", ""interactions"": """", ""initialStateCheck"": false }
+      ],
+      ""bindings"": [
+        { ""name"": """", ""id"": ""c3e5a7b9-1d2f-4a6c-8e0b-9f7d5c3a1e24"", ""path"": ""<Keyboard>/h"", ""interactions"": """",
+          ""processors"": """", ""groups"": """", ""action"": ""ToggleSpells"", ""isComposite"": false, ""isPartOfComposite"": false },
+        { ""name"": """", ""id"": ""d4f6b8c0-2e3a-4b7d-9f1c-0a8e6d4b2f35"", ""path"": ""<Gamepad>/rightStickPress"", ""interactions"": """",
+          ""processors"": """", ""groups"": """", ""action"": ""ToggleSpells"", ""isComposite"": false, ""isPartOfComposite"": false }
+      ]
+    }";
+
+    private static InputActionAsset _modAsset;
+    private static InputAction _toggleSpells;
+    private static int _modVersion;
+
     private sealed class BindingInfo
     {
         public string Name, Path;
@@ -63,6 +86,16 @@ internal static class Bindings
     {
         try { if (File.Exists(FilePath)) _overrides = DropBrokenOverrides(File.ReadAllText(FilePath)); }
         catch (Exception e) { KeybindsMod.Log.Warning($"can't read {FilePath}: {e.Message}"); }
+
+        try
+        {
+            _modAsset = InputActionAsset.FromJson("{\"maps\":[" + ModMapJson + "]}");
+            _modAsset.name = "KeybindsUnlocked_Mod";
+            _modAsset.hideFlags = HideFlags.HideAndDontSave;
+            _toggleSpells = _modAsset.FindAction(ModMap + "/" + ToggleSpells, false);
+            _modAsset.Enable();
+        }
+        catch (Exception e) { KeybindsMod.Log.Warning($"can't create mod actions: {e.Message}"); }
 
         try
         {
@@ -125,6 +158,11 @@ internal static class Bindings
             }
             catch (Exception e) { KeybindsMod.Log.Warning($"can't apply keybinds to '{asset.name}': {e.Message}"); }
         }
+        if (_modAsset != null && _modVersion != _version)
+        {
+            try { ApplyOverrides(_modAsset); _modVersion = _version; }
+            catch (Exception e) { KeybindsMod.Log.Warning($"can't apply keybinds to mod actions: {e.Message}"); }
+        }
         // экран мог успеть нарисовать иконки клавиш до того, как новый набор получил
         // переназначения — перерисовываем
         if (appliedAny && !string.IsNullOrEmpty(_overrides)) Applied?.Invoke();
@@ -143,7 +181,7 @@ internal static class Bindings
     private static void EnsureModel(InputActionAsset template)
     {
         if (_model != null) return;
-        string json = template.ToJson();
+        string json = WithModMap(template.ToJson());
         _model = InputActionAsset.FromJson(json);
         _model.name = ModelName;
         _model.hideFlags = HideFlags.HideAndDontSave;
@@ -152,6 +190,24 @@ internal static class Bindings
     }
 
     public static bool Ready => _model != null;
+
+    // Нажата ли своя клавиша «Показать / скрыть заклинания» (не во время переназначения)
+    public static bool ToggleSpellsPressed() => _operation == null && _toggleSpells != null && _toggleSpells.WasPressedThisFrame();
+
+    private static string WithModMap(string json)
+    {
+        try
+        {
+            var root = JsonNode.Parse(json);
+            root["maps"].AsArray().Add(JsonNode.Parse(ModMapJson));
+            return root.ToJsonString();
+        }
+        catch (Exception e)
+        {
+            KeybindsMod.Log.Warning($"can't add mod actions to the keybind list: {e.Message}");
+            return json;
+        }
+    }
 
     // Порядок привязок у действия = порядок строк "bindings" карты с этим действием
     private static Dictionary<string, List<BindingInfo>> ParseLayout(string json)

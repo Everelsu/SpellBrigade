@@ -1,0 +1,9 @@
+{
+  "name": "SkipIntro",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/Everelsu/SpellBrigade",
+  "description": "Skips the studio logos and intro videos, so the game opens straight to the main menu. Requires MelonLoader.",
+  "dependencies": [
+    "LavaGang-MelonLoader-0.7.3"
+  ]
+}

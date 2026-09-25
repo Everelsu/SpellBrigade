@@ -9,7 +9,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <DebugType>none</DebugType>
     <GenerateDependencyFile>false</GenerateDependencyFile>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
   </PropertyGroup>
@@ -19,6 +19,15 @@
     <MelonNet6>$(GameRoot)\MelonLoader\net6</MelonNet6>
     <InteropRoot>$(GameRoot)\MelonLoader\Il2CppAssemblies</InteropRoot>
   </PropertyGroup>
+
+  <!-- Mod Menu необязателен: dll не копируется, раздел регистрируется только если он установлен -->
+  <ItemGroup Label="Mod Menu">
+    <ProjectReference Include="..\ModMenu\ModMenu.csproj" Private="false" />
+  </ItemGroup>
+
+  <ItemGroup Label="Shared code">
+    <Compile Include="..\Shared\*.cs" />
+  </ItemGroup>
 
   <ItemGroup Label="MelonLoader core">
     <Reference Include="MelonLoader">

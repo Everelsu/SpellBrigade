@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Grenze:wght@700;800&family=Source+Sans+3:wght@600;800&display=block");
+
+:root {
+  --gold: #f2c14e;
+  --ink: #eef0f7;
+  --night: #070b1c;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; background: var(--night); overflow: hidden; }
+
+.canvas { position: relative; width: 100%; height: 100%; overflow: hidden; }
+
+.scene {
+  position: absolute; inset: 0;
+  background: url("menu_clean.png") no-repeat;
+  background-size: cover;
+}
+.shade { position: absolute; inset: 0; }
+
+.x, .title {
+  font-family: "Grenze", "Palatino Linotype", serif; font-weight: 800; line-height: 1;
+  color: var(--gold);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .45);
+}
+.title { color: var(--ink); }
+
+.sub {
+  font-family: "Source Sans 3", "Segoe UI", sans-serif; font-weight: 600;
+  color: rgba(238, 240, 247, .72); letter-spacing: .22em; text-transform: uppercase;
+}
+.sub .sep { color: var(--gold); padding: 0 .6em; }
+
+/* клавиши в стиле иконок игры: тёмная клавиша, толстая белая рамка, жирная белая буква */
+.keys { display: flex; align-items: center; }
+.key {
+  display: grid; place-items: center;
+  background: #231d2c; border: solid #fff; border-radius: 6%;
+  color: #fff; font-family: "Source Sans 3", "Segoe UI", sans-serif; font-weight: 800; line-height: 1;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .45);
+}
+.key.old { opacity: .38; }
+.arrow { color: var(--gold); font-family: "Source Sans 3", sans-serif; font-weight: 800; line-height: 1; }

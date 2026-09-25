@@ -278,15 +278,40 @@ internal static class Prompts
                     var fitter = text.GetComponent<ContentSizeFitter>();
                     if (fitter != null && fitter.horizontalFit == ContentSizeFitter.FitMode.PreferredSize)
                         PromptTexts.Add((text, fitter));
+                    else
+                        ReportClipped(text); // без фиттера не трогаем — только пишем в лог, как устроена
                 }
         }
 
         foreach (var (text, fitter) in PromptTexts)
         {
             if (text == null || fitter == null || !text.isActiveAndEnabled) continue;
-            if (Mathf.Abs(text.rectTransform.rect.width - text.preferredWidth) > 2f)
-                LayoutRebuilder.ForceRebuildLayoutImmediate(text.rectTransform);
+            float preferred = text.preferredWidth;
+            if (Mathf.Abs(text.rectTransform.rect.width - preferred) <= 2f) continue;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(text.rectTransform);
+            // фиттер не всегда успевает — ставим ширину по тексту сами, как сделал бы он
+            if (Mathf.Abs(text.rectTransform.rect.width - preferred) > 2f)
+                text.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, preferred);
         }
+    }
+
+    private static readonly HashSet<IntPtr> Reported = new();
+
+    // Подпись у иконки шире своего прямоугольника, а фиттера нет — пишем устройство в лог
+    // (один раз на подпись), чтобы поправить точно, не задевая остальной текст
+    private static void ReportClipped(TMP_Text text)
+    {
+        if (text == null || !text.isActiveAndEnabled || string.IsNullOrEmpty(text.text)) return;
+        var r = text.rectTransform;
+        if (text.preferredWidth <= r.rect.width + 2f || !Reported.Add(text.Pointer)) return;
+        var path = new List<string>();
+        for (var t = text.transform; t != null && path.Count < 6; t = t.parent) path.Insert(0, t.name);
+        var parentComponents = new List<string>();
+        if (text.transform.parent != null)
+            foreach (var c in text.transform.parent.GetComponents<Component>()) parentComponents.Add(c.GetIl2CppType().Name);
+        KeybindsMod.Log.Msg($"[prompt] '{text.text}' {string.Join("/", path)}: width {r.rect.width:0} < text {text.preferredWidth:0}, " +
+                            $"align {text.horizontalAlignment}, pivot {r.pivot.x:0.##}, anchors {r.anchorMin.x:0.##}-{r.anchorMax.x:0.##}, " +
+                            $"wrap {text.textWrappingMode}, parent [{string.Join(", ", parentComponents)}]");
     }
 
     private static TMP_FontAsset FindFont(Transform near)

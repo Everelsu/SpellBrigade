@@ -4,10 +4,12 @@ using HarmonyLib;
 using Il2Cpp;
 using MelonLoader;
 using MelonLoader.Preferences;
+using SpellBrigade.Shared;
 using UnityEngine;
 
 [assembly: MelonInfo(typeof(RunCustomizer.RunCustomizerMod), "Run Customizer", "1.0.0", "Relsev")]
 [assembly: MelonGame("BoltBlasterGames", "TheSpellBrigade")]
+[assembly: MelonOptionalDependencies("ModMenu")] // без Mod Menu мод работает как раньше
 
 namespace RunCustomizer;
 
@@ -44,6 +46,10 @@ public class RunCustomizerMod : MelonMod
 
         ApplyPatches();
         Log.Msg($"{_hooksInstalled}/{_hooksTotal} hooks — difficulty mode: {Modes.Selected}");
+
+        if (FindMelon("Mod Menu", "Relsev") != null)
+            try { MenuPage.Register(); }
+            catch (Exception e) { Log.Warning($"Mod Menu page: {e.Message}"); }
     }
 
     internal static void Save() => _category.SaveToFile(false);
@@ -55,6 +61,7 @@ public class RunCustomizerMod : MelonMod
 
     public override void OnUpdate()
     {
+        WheelSelect.Tick(); // колесо мыши над «< значение >» листает варианты
         if (Time.unscaledTime < _nextLobbySync) return;
         _nextLobbySync = Time.unscaledTime + 0.5f;
         try { Modes.SyncLobby(); }
@@ -103,30 +110,7 @@ public class RunCustomizerMod : MelonMod
 
     private void Patch(MethodInfo original, string prefix = null, string postfix = null, Type patchClass = null)
     {
-        patchClass ??= typeof(DifficultyHooks);
         _hooksTotal++;
-        string name = original != null ? $"{original.DeclaringType?.Name}.{original.Name}" : $"{prefix ?? postfix} target";
-        try
-        {
-            if (original == null) throw new MissingMethodException(name);
-
-            // IL2CPP склеивает одинаковый машинный код разных методов: хук такого метода
-            // задел бы и все его «двойники». Такие методы не трогаем.
-            var sharedWith = SharedCodeGuard.FindMethodsSharingCode(original);
-            if (sharedWith.Count > 0)
-            {
-                Log.Warning($"skipped {name}: its native code is shared with {sharedWith.Count} other method(s)");
-                return;
-            }
-
-            HarmonyInstance.Patch(original,
-                prefix:  prefix  != null ? new HarmonyMethod(AccessTools.Method(patchClass, prefix))  : null,
-                postfix: postfix != null ? new HarmonyMethod(AccessTools.Method(patchClass, postfix)) : null);
-            _hooksInstalled++;
-        }
-        catch (Exception e)
-        {
-            Log.Error($"failed to hook {name} — this part is disabled. {e.GetType().Name}: {e.Message}");
-        }
+        if (Hooks.Patch(HarmonyInstance, Log, original, patchClass ?? typeof(DifficultyHooks), prefix, postfix)) _hooksInstalled++;
     }
 }

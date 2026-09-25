@@ -209,6 +209,15 @@ internal static class PlayerList
         Place(_maxValue.rectTransform, -100f, 110f);
         _maxValue.fontStyle = FontStyles.Bold;
         _more = ArrowButton(row, ">", 0f, () => MorePlayersMod.SetMaxPlayers(MorePlayersMod.MaxPlayers + 1));
+
+        // колесо мыши над строкой — как стрелки
+        SpellBrigade.Shared.WheelSelect.Register(row.gameObject, step =>
+        {
+            int value = MorePlayersMod.MaxPlayers + step;
+            if (value < Math.Max(MorePlayersMod.MinPlayers, _playerCount)) return;
+            MorePlayersMod.SetMaxPlayers(value);
+            _nextRefresh = 0f;
+        });
     }
 
     private static TMP_Text _maxLabel;

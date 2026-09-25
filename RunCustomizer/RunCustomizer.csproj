@@ -20,6 +20,15 @@
     <InteropRoot>$(GameRoot)\MelonLoader\Il2CppAssemblies</InteropRoot>
   </PropertyGroup>
 
+  <ItemGroup Label="Shared code">
+    <Compile Include="..\Shared\*.cs" />
+  </ItemGroup>
+
+  <!-- Mod Menu необязателен: dll не копируется, страница регистрируется только если он установлен -->
+  <ItemGroup Label="Mod Menu">
+    <ProjectReference Include="..\ModMenu\ModMenu.csproj" Private="false" />
+  </ItemGroup>
+
   <ItemGroup Label="MelonLoader core">
     <Reference Include="MelonLoader">
       <HintPath>$(MelonNet6)\MelonLoader.dll</HintPath>

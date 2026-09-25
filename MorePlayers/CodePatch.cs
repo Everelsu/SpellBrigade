@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Iced.Intel;
 using Il2CppInterop.Common;
+using SpellBrigade.Shared;
 
 namespace MorePlayers;
 

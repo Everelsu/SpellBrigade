@@ -1,0 +1,40 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<style>
+  .scene { background-position: 50% 12%; }
+  .shade { background: linear-gradient(90deg, rgba(6, 9, 20, .9) 0%, rgba(6, 9, 20, .72) 45%, rgba(6, 9, 20, .55) 100%); }
+  .content { position: absolute; inset: 0; padding: 0 80px; display: flex; align-items: center; justify-content: space-between; }
+  .title { font-size: 76px; padding-bottom: 37px; }
+
+  /* карточки закреплённых испытаний — как в забеге */
+  .cards { width: 560px; display: grid; gap: 12px; font-family: "Source Sans 3", "Segoe UI", sans-serif; }
+  .card { display: grid; grid-template-columns: 72px 1fr; gap: 16px; align-items: center; padding: 12px 16px; background: rgba(13, 10, 23, .78); }
+  .badge { width: 72px; height: 72px; display: grid; place-items: center; background: #1b1722; border: 3px solid rgba(255, 255, 255, .85);
+           border-radius: 14px; }
+  .badge svg { width: 40px; fill: #fff; }
+  .text { color: #fff; font-size: 24px; font-weight: 600; line-height: 1.15; }
+  .meta { display: flex; align-items: center; gap: 14px; margin-top: 10px; }
+  .bar { flex: 1; height: 5px; background: rgba(255, 255, 255, .15); }
+  .bar i { display: block; height: 100%; background: var(--gold); }
+  .count { color: var(--gold); font-weight: 800; font-size: 20px; min-width: 110px; text-align: right; }
+  .pin { position: absolute; right: 56px; top: 44px; width: 46px; fill: var(--gold); }
+</style></head>
+<body><div class="canvas">
+  <div class="scene"></div><div class="shade"></div>
+  <div class="content">
+    <div class="title">Pinned Challenges</div>
+    <div class="cards">
+      <div class="card">
+        <div class="badge"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.5l7.1-.6z"/></svg></div>
+        <div><div class="text">As Ludwig, sacrifice 1 066 enemies.</div>
+          <div class="meta"><div class="bar"><i style="width:34%"></i></div><div class="count">366 / 1 066</div></div></div>
+      </div>
+      <div class="card">
+        <div class="badge"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></div>
+        <div><div class="text">As Moon Mage, destroy 54 pieces of Coral.</div>
+          <div class="meta"><div class="bar"><i style="width:72%"></i></div><div class="count">39 / 54</div></div></div>
+      </div>
+    </div>
+  </div>
+  <svg class="pin" viewBox="0 0 24 24"><g transform="rotate(35 12 12)"><rect x="7.5" y="1.5" width="9" height="2.6" rx="1.1"/><path d="M9 4.1h6v5.2l2.8 3.3H6.2L9 9.3z"/><rect x="11.25" y="12.2" width="1.5" height="9.6" rx="0.75"/></g></svg>
+</div></body></html>

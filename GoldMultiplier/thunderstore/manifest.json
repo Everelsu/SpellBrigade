@@ -1,0 +1,9 @@
+{
+  "name": "GoldXpMultiplier",
+  "version_number": "2.5.0",
+  "website_url": "https://github.com/Everelsu/SpellBrigade",
+  "description": "Multiplies end-of-run gold, run XP and wizard rank XP. Set everything in a new Options tab. Requires MelonLoader.",
+  "dependencies": [
+    "LavaGang-MelonLoader-0.7.3"
+  ]
+}

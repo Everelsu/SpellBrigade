@@ -1,0 +1,22 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<style>
+  .scene { background-position: 50% 12%; }
+  .shade { background: linear-gradient(90deg, rgba(6, 9, 20, .9) 0%, rgba(6, 9, 20, .72) 45%, rgba(6, 9, 20, .5) 100%); }
+  .content { position: absolute; inset: 0; padding: 0 80px; display: flex; align-items: center; justify-content: space-between; }
+  .left { display: grid; gap: 16px; }
+  .title { font-size: 76px; }
+  .left { padding-bottom: 37.0px; } /* место убранной подписи — заголовок остаётся на месте */
+  .keys { gap: 22px; }
+  .key { width: 104px; height: 104px; border-width: 8px; font-size: 58px; }
+  .arrow { font-size: 54px; }
+</style></head>
+<body><div class="canvas">
+  <div class="scene"></div><div class="shade"></div>
+  <div class="content">
+    <div class="left">
+      <div class="title">Keybinds Unlocked</div>
+    </div>
+    <div class="keys"><div class="key old">Q</div><div class="arrow">→</div><div class="key">E</div></div>
+  </div>
+</div></body></html>

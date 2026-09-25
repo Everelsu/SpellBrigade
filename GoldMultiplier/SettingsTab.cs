@@ -22,7 +22,7 @@ internal static class SettingsTab
     private const string ButtonName = "SBMod_Button";
     private const string PanelName  = "SBMod_Panel";
 
-    private static readonly float[] Presets =
+    internal static readonly float[] Presets =
         { 0.5f, 1f, 1.25f, 1.5f, 2f, 2.5f, 3f, 4f, 5f, 7.5f, 10f, 15f, 20f, 25f, 50f, 100f };
 
     private sealed class Row
@@ -112,6 +112,7 @@ internal static class SettingsTab
             AddMultiplierRow(container, rowTemplate, Strings.Gold, GoldXpMod._goldEntry),
             AddMultiplierRow(container, rowTemplate, Strings.Xp, GoldXpMod._xpEntry),
             AddMultiplierRow(container, rowTemplate, Strings.RankXp, GoldXpMod._rankXpEntry),
+            AddToggleRow(container, rowTemplate, Strings.Reveal, GoldXpMod._revealEntry),
         };
         // Только вверх/вниз: влево/вправо у строки меняют значение, а не уводят фокус
         for (int i = 0; i < selectors.Count; i++)

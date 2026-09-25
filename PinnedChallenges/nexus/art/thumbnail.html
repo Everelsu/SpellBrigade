@@ -1,0 +1,21 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<style>
+  .scene { background-position: 50% 0%; }
+  .shade { background: rgba(6, 9, 20, .62); }
+  .content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 30px; text-align: center; padding-bottom: 57px; }
+  .icon { width: 210px; margin-bottom: 8px; filter: drop-shadow(0 6px 24px rgba(0, 0, 0, .45)); }
+  .title { font-size: 84px; }
+</style></head>
+<body><div class="canvas">
+  <div class="scene"></div><div class="shade"></div>
+  <div class="content">
+    <!-- та же булавка, что на карточках в игре -->
+    <svg class="icon" viewBox="0 0 24 24"><g fill="#f2c14e" transform="rotate(35 12 12)">
+      <rect x="7.5" y="1.5" width="9" height="2.6" rx="1.1"/>
+      <path d="M9 4.1h6v5.2l2.8 3.3H6.2L9 9.3z"/>
+      <rect x="11.25" y="12.2" width="1.5" height="9.6" rx="0.75"/>
+    </g></svg>
+    <div class="title">Pinned Challenges</div>
+  </div>
+</div></body></html>

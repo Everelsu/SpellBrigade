@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using Il2Cpp;
 using MelonLoader;
 using MelonLoader.Preferences;
+using SpellBrigade.Shared;
 using UnityEngine;
 
 [assembly: MelonInfo(typeof(MorePlayers.MorePlayersMod), "More Players", "1.0.0", "Relsev")]
 [assembly: MelonGame("BoltBlasterGames", "TheSpellBrigade")]
+[assembly: MelonOptionalDependencies("ModMenu")] // без Mod Menu мод работает как раньше
 
 namespace MorePlayers;
 
@@ -94,21 +96,14 @@ public class MorePlayersMod : MelonMod
           + Hook(typeof(GameplayPartyOverviewUI), nameof(GameplayPartyOverviewUI.RemovePlayerOverview), typeof(RunUi), null, nameof(RunUi.PartyChangedPostfix)));
 
         Log.Msg($"{found}/{Patches.Count} code patches, {hooks}/7 hooks — up to {MaxPlayers} players (everyone needs the mod)");
+
+        if (FindMelon("Mod Menu", "Relsev") != null)
+            try { MenuPage.Register(); }
+            catch (Exception e) { Log.Warning($"Mod Menu page: {e.Message}"); }
     }
 
-    private int Hook(Type type, string method, Type patchClass, string prefix, string postfix = null)
-    {
-        var target = HarmonyLib.AccessTools.Method(type, method);
-        if (target == null || SharedCodeGuard.FindMethodsSharingCode(target).Count > 0)
-        {
-            Log.Warning($"skipped hook {type.Name}.{method} (shared code)");
-            return 0;
-        }
-        HarmonyInstance.Patch(target,
-            prefix: prefix != null ? new HarmonyLib.HarmonyMethod(patchClass, prefix) : null,
-            postfix: postfix != null ? new HarmonyLib.HarmonyMethod(patchClass, postfix) : null);
-        return 1;
-    }
+    private int Hook(Type type, string method, Type patchClass, string prefix, string postfix = null) =>
+        Hooks.Patch(HarmonyInstance, Log, type, method, patchClass, prefix, postfix) ? 1 : 0;
 
     private static void Add(string name, string type, string method, Func<Iced.Intel.Instruction, Iced.Intel.Instruction, bool> match, Func<int> value) =>
         Patches.Add(new CodePatch { Name = name, Type = type, Method = method, Match = match, Value = value });
@@ -129,6 +124,7 @@ public class MorePlayersMod : MelonMod
 
     public override void OnUpdate()
     {
+        WheelSelect.Tick(); // колесо мыши над «< значение >» листает варианты
         try { RunUi.Tick(); }
         catch (Exception e) { Log.Warning($"team stats: {e.Message}"); }
         try { PlayerList.Tick(); }

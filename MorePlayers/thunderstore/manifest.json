@@ -1,0 +1,7 @@
+{
+  "name": "MorePlayers",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/Everelsu/SpellBrigade",
+  "description": "Up to 8 players by default (4-16 configurable). Lobby split into rooms of 4 seats, full player list on Tab, capture points keep scaling. Every player needs the mod.",
+  "dependencies": ["LavaGang-MelonLoader-0.7.3"]
+}

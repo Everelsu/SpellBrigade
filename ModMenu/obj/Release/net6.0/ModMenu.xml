@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ModMenu</name>
+    </assembly>
+    <members>
+        <member name="T:SpellBrigade.ModMenu.Menu">
+            <summary>
+            Вкладка «Моды» в настройках игры: один прокручиваемый список, в нём раздел на каждый мод
+            (разделы по алфавиту). Любой мод может добавить сюда свой раздел.
+            Настройки из MelonPreferences появляются и без этого API — автоматически,
+            по странице на категорию (скрытые категории и записи не показываются).
+            </summary>
+            <example>
+            <code>
+            Menu.AddPage("MyMod", "My Mod")
+                .Toggle("Enabled", () => enabled.Value, v => enabled.Value = v)
+                .Number("Speed", 0.5f, 3f, 0.25f, () => speed.Value, v => speed.Value = v)
+                .Button("Reset", ResetEverything);
+            </code>
+            </example>
+        </member>
+        <member name="E:SpellBrigade.ModMenu.Menu.RefreshRequested">
+            <summary>Значения поменялись не из меню — перерисовать открытые строки.</summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Menu.AddPage(System.String,System.Func{System.String})">
+            <summary>
+            Страница мода. Повторный вызов с тем же id возвращает ту же страницу.
+            Если id совпадает с именем категории MelonPreferences, её автоматическая страница не показывается.
+            Регистрируйте в OnInitializeMelon: меню строится, когда игра создаёт окно настроек.
+            </summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Menu.HideCategory(System.String)">
+            <summary>Не показывать автоматическую страницу для категории MelonPreferences.</summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Menu.Refresh">
+            <summary>Перечитать значения во всех строках (например, после изменения настроек из кода).</summary>
+        </member>
+        <member name="T:SpellBrigade.ModMenu.ButtonLayout">
+            <summary>Где в строке стоят кнопки.</summary>
+        </member>
+        <member name="F:SpellBrigade.ModMenu.ButtonLayout.Stretch">
+            <summary>Поровну на всю ширину строки.</summary>
+        </member>
+        <member name="F:SpellBrigade.ModMenu.ButtonLayout.Left">
+            <summary>Слева, ширина по тексту.</summary>
+        </member>
+        <member name="F:SpellBrigade.ModMenu.ButtonLayout.Center">
+            <summary>По центру, ширина по тексту.</summary>
+        </member>
+        <member name="F:SpellBrigade.ModMenu.ButtonLayout.Right">
+            <summary>Справа, ширина по тексту.</summary>
+        </member>
+        <member name="F:SpellBrigade.ModMenu.ButtonLayout.Value">
+            <summary>В колонке значений — там, где у настроек «&lt; значение &gt;».</summary>
+        </member>
+        <member name="T:SpellBrigade.ModMenu.MenuButton">
+            <summary>Кнопка для <see cref="M:SpellBrigade.ModMenu.Page.Buttons(SpellBrigade.ModMenu.MenuButton[])"/>: текст (может следовать за языком игры) и действие.</summary>
+        </member>
+        <member name="T:SpellBrigade.ModMenu.Page">
+            <summary>Страница мода: строки идут сверху вниз в порядке добавления. Методы возвращают страницу для цепочки вызовов.</summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Page.Header(System.Func{System.String})">
+            <summary>Заголовок раздела.</summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Page.Toggle(System.Func{System.String},System.Func{System.Boolean},System.Action{System.Boolean},System.Nullable{System.Boolean})">
+            <summary>Вкл/Выкл.</summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Page.Choice(System.Func{System.String},System.Func{System.Collections.Generic.IList{System.String}},System.Func{System.Int32},System.Action{System.Int32},System.Nullable{System.Int32})">
+            <summary>Выбор из списка; get/set/@default — номер варианта.</summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Page.Number(System.Func{System.String},System.Single,System.Single,System.Single,System.Func{System.Single},System.Action{System.Single},System.Func{System.Single,System.String},System.Nullable{System.Single})">
+            <summary>Число от min до max с шагом step. format — как показывать значение (по умолчанию «0.##»).</summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Page.Number(System.Func{System.String},System.Collections.Generic.IEnumerable{System.Single},System.Func{System.Single},System.Action{System.Single},System.Func{System.Single,System.String},System.Nullable{System.Single})">
+            <summary>Число из заданного списка значений (например, пресеты x0.5, x1, x2…).</summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Page.Note(System.Func{System.String})">
+            <summary>Пояснение мелким текстом (можно в несколько строк через \n).</summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Page.Button(System.Func{System.String},System.Action,SpellBrigade.ModMenu.ButtonLayout)">
+            <summary>Одна кнопка. По умолчанию — по центру строки, ширина по тексту.</summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Page.Buttons(SpellBrigade.ModMenu.MenuButton[])">
+            <summary>Несколько кнопок в одну строку — поровну на всю ширину.</summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Page.Buttons(SpellBrigade.ModMenu.ButtonLayout,SpellBrigade.ModMenu.MenuButton[])">
+            <summary>Несколько кнопок в одну строку с выбранной раскладкой (геймпад ходит между ними влево/вправо).</summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Page.Action(System.Func{System.String},System.Func{System.String},System.Action)">
+            <summary>Строка-действие: подпись слева, кнопка справа — там же, где значения у настроек.</summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Page.Custom(System.Single,System.Func{UnityEngine.RectTransform,UnityEngine.UI.Selectable})">
+            <summary>
+            Произвольная строка высотой height (в единицах интерфейса игры, обычная строка — 150).
+            build получает пустой RectTransform шириной с обычную строку и возвращает то,
+            что должно получать фокус с клавиатуры/геймпада (или null).
+            </summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Page.Entry(MelonLoader.MelonPreferences_Entry,System.Func{System.String})">
+            <summary>
+            Запись MelonPreferences: bool — Вкл/Выкл, числа — выбор значения (в пределах ValueRange,
+            если он задан), enum — список. Строки не показываются. Изменения сразу сохраняются в cfg,
+            сброс — к значению по умолчанию из CreateEntry.
+            </summary>
+        </member>
+        <member name="M:SpellBrigade.ModMenu.Page.Category(MelonLoader.MelonPreferences_Category)">
+            <summary>Все видимые записи категории MelonPreferences; её автоматическая страница прячется.</summary>
+        </member>
+    </members>
+</doc>

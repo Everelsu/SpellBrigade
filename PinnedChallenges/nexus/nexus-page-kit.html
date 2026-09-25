@@ -1,0 +1,405 @@
+<title>Pinned Challenges Nexus Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+  :root {
+    --ground: #f3f1ec;
+    --surface: #fbfaf7;
+    --ink: #1d1b22;
+    --muted: #686474;
+    --line: #dcd7cc;
+    --gold: #a8740a;
+    --gold-soft: #f3e3b8;
+    --ok: #2f7d4f;
+    --nexus-bg: #1b1c21;
+    --nexus-panel: #23242b;
+    --nexus-ink: #d8d9de;
+    --nexus-muted: #8e909b;
+    --nexus-gold: #f5c542;
+    --nexus-link: #d98f40;
+    --code-bg: #efece5;
+    --radius: 6px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #15151a;
+      --surface: #1c1c22;
+      --ink: #ebe9f0;
+      --muted: #9d99a8;
+      --line: #2f2e37;
+      --gold: #f0c14b;
+      --gold-soft: #3a3120;
+      --ok: #5cc48a;
+      --code-bg: #24232b;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #15151a;
+    --surface: #1c1c22;
+    --ink: #ebe9f0;
+    --muted: #9d99a8;
+    --line: #2f2e37;
+    --gold: #f0c14b;
+    --gold-soft: #3a3120;
+    --ok: #5cc48a;
+    --code-bg: #24232b;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font: 16px/1.55 "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    padding-inline: 16px;
+    padding-block: 28px 56px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 28px; }
+
+  header { display: grid; gap: 6px; }
+  .eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  h1 {
+    font-family: "Grenze Gotisch", "Palatino Linotype", Georgia, serif;
+    font-weight: 700; font-size: clamp(34px, 5vw, 52px); line-height: 1.05; margin: 0;
+    text-wrap: balance;
+  }
+  h1 .x { color: var(--gold); }
+  .lede { margin: 0; color: var(--muted); max-width: 68ch; }
+
+  .layout { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 28px; align-items: start; }
+  @media (max-width: 900px) { .layout { grid-template-columns: minmax(0, 1fr); } }
+
+  h2 { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; font-weight: 700; }
+
+  .fields { display: grid; gap: 14px; }
+  .field { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; display: grid; gap: 6px; }
+  .field-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .field-name { font-weight: 700; font-size: 14px; }
+  .field-hint { font-size: 13px; color: var(--muted); }
+  .field-value { font-size: 15px; overflow-wrap: anywhere; white-space: pre-wrap; }
+  .field-value.mono { font-family: "JetBrains Mono", Consolas, monospace; font-size: 13px; }
+  .count { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  button.copy {
+    font: 600 13px/1 "Source Sans 3", system-ui, sans-serif;
+    color: var(--ink); background: transparent; border: 1px solid var(--line);
+    border-radius: 999px; padding: 6px 12px; cursor: pointer; white-space: nowrap;
+  }
+  button.copy:hover { border-color: var(--gold); color: var(--gold); }
+  button.copy:focus-visible, .tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  button.copy.done { border-color: var(--ok); color: var(--ok); }
+
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: step; }
+  .steps li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; }
+  .steps li::before {
+    counter-increment: step; content: counter(step);
+    width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--gold-soft); color: var(--gold); font-weight: 700; font-size: 13px;
+  }
+  .steps b { font-weight: 700; }
+  .steps .path { font-family: "JetBrains Mono", Consolas, monospace; font-size: 13px; background: var(--code-bg); padding: 1px 5px; border-radius: 4px; }
+
+  .main { display: grid; gap: 12px; min-width: 0; }
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .tab {
+    font: 600 14px/1 "Source Sans 3", system-ui, sans-serif; cursor: pointer;
+    padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line);
+    background: transparent; color: var(--muted);
+  }
+  .tab[aria-selected="true"] { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+  .tabs .spacer { flex: 1; }
+
+  /* превью в стиле страницы Nexus */
+  .nexus {
+    background: var(--nexus-bg); color: var(--nexus-ink); border-radius: var(--radius);
+    padding: 28px clamp(16px, 3vw, 36px); font: 15px/1.6 "Source Sans 3", Arial, sans-serif;
+    overflow-wrap: anywhere;
+  }
+  .nexus a { color: var(--nexus-link); }
+  .nexus hr { border: 0; border-top: 1px solid #3a3b44; margin: 18px 0; }
+  .nexus ul, .nexus ol { margin: 6px 0 6px 22px; padding: 0; }
+  .nexus li { margin: 3px 0; }
+  .nexus pre {
+    background: #121317; color: #cfd2da; padding: 12px 14px; border-radius: 4px;
+    font: 13px/1.5 "JetBrains Mono", Consolas, monospace; overflow-x: auto; white-space: pre;
+  }
+  .nexus .mono { font-family: "JetBrains Mono", Consolas, monospace; font-size: 13px; }
+  .nexus details { background: var(--nexus-panel); border-radius: 4px; padding: 8px 14px; }
+  .nexus summary { cursor: pointer; color: var(--nexus-muted); font-weight: 600; }
+  .nexus .s1 { font-size: 11px; } .nexus .s2 { font-size: 13px; } .nexus .s3 { font-size: 15px; }
+  .nexus .s4 { font-size: 18px; } .nexus .s5 { font-size: 22px; } .nexus .s6 { font-size: 30px; line-height: 1.2; }
+  .nexus .center { text-align: center; }
+
+  .raw {
+    background: var(--code-bg); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 14px 16px; margin: 0; overflow-x: auto; max-height: 70vh;
+    font: 12.5px/1.55 "JetBrains Mono", Consolas, monospace; white-space: pre;
+  }
+
+  .files { display: grid; gap: 8px; }
+  .file { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 10px 14px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+  .file code { font-family: "JetBrains Mono", Consolas, monospace; font-size: 13px; overflow-wrap: anywhere; }
+  .file span { color: var(--muted); font-size: 13px; }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Nexus Mods · The Spell Brigade · новый мод</div>
+    <h1>Pinned Challenges <span class="x">1.0.0</span></h1>
+    <p class="lede">Всё, чтобы создать страницу мода: поля для заполнения, описание в BBCode с предпросмотром и порядок действий. Кнопка «Копировать» кладёт текст в буфер обмена, дальше вставляете в редактор Nexus.</p>
+  </header>
+
+  <div class="layout">
+    <aside class="fields" aria-label="Поля страницы">
+      <h2>Поля страницы</h2>
+
+      <div class="field">
+        <div class="field-head"><span class="field-name">Название</span><button class="copy" data-copy="f-name">Копировать</button></div>
+        <div class="field-value" id="f-name">Pinned Challenges</div>
+      </div>
+
+      <div class="field">
+        <div class="field-head"><span class="field-name">Краткое описание (Summary)</span><button class="copy" data-copy="f-summary">Копировать</button></div>
+        <div class="field-value" id="f-summary">Pin challenges in the Challenges menu and see their progress during the run. Drag and resize the cards with the mouse, they hide on the upgrade screen. Requires MelonLoader.</div>
+        <div class="count" id="f-summary-count"></div>
+      </div>
+
+      <div class="field">
+        <div class="field-head"><span class="field-name">Версия</span><button class="copy" data-copy="f-version">Копировать</button></div>
+        <div class="field-value mono" id="f-version">1.0.0</div>
+      </div>
+
+      <div class="field">
+        <div class="field-head"><span class="field-name">Категория</span></div>
+        <div class="field-value">User Interface</div>
+        <div class="field-hint">Если такой категории у игры нет, подойдёт Miscellaneous.</div>
+      </div>
+
+      <div class="field">
+        <div class="field-head"><span class="field-name">Требования (off-site)</span><button class="copy" data-copy="f-req">Копировать</button></div>
+        <div class="field-value mono" id="f-req">https://github.com/LavaGang/MelonLoader/releases</div>
+        <div class="field-hint">Название требования: MelonLoader 0.7.x</div>
+      </div>
+
+      <div class="field">
+        <div class="field-head"><span class="field-name">Описание файла</span><button class="copy" data-copy="f-file">Копировать</button></div>
+        <div class="field-value" id="f-file">Main file. Put Mods/PinnedChallenges.dll into your game folder and launch the game. Settings: Mod Menu (optional).</div>
+      </div>
+
+      <div class="field">
+        <div class="field-head"><span class="field-name">Changelog 1.0.0</span><button class="copy" data-copy="f-changelog">Копировать</button></div>
+        <div class="field-value" id="f-changelog">Initial release</div>
+      </div>
+    </aside>
+
+    <section class="main" aria-label="Описание">
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" id="tab-preview" aria-selected="true" aria-controls="panel-preview">Предпросмотр</button>
+        <button class="tab" role="tab" id="tab-raw" aria-selected="false" aria-controls="panel-raw">BBCode</button>
+        <span class="spacer"></span>
+        <button class="copy" data-copy="bbcode-source">Копировать BBCode</button>
+      </div>
+      <div id="panel-preview" role="tabpanel" aria-labelledby="tab-preview"><div class="nexus" id="preview"></div></div>
+      <div id="panel-raw" role="tabpanel" aria-labelledby="tab-raw" hidden><pre class="raw" id="raw"></pre></div>
+
+      <h2 style="margin-top:18px">Порядок действий</h2>
+      <ol class="steps">
+        <li><div><b>Upload → Add mod:</b> игра The Spell Brigade, название, Summary, версия и категория — значения слева.</div></li>
+        <li><div><b>Description:</b> переключите редактор в режим BBCode (значок <span class="path">[ ]</span>) и вставьте описание.</div></li>
+        <li><div><b>Files:</b> загрузите <span class="path">PinnedChallenges-1.0.0.zip</span> как Main file, версия 1.0.0.</div></li>
+        <li><div><b>Requirements:</b> добавьте MelonLoader как off-site требование.</div></li>
+        <li><div><b>Images:</b> <span class="path">thumbnail.png</span> (1280×720) — основное изображение (Primary), <span class="path">header.png</span> (1400×400) — шапка страницы (Header).</div></li>
+        <li><div><b>По желанию:</b> добавьте ссылки между страницами своих модов для The Spell Brigade (Gold &amp; XP Multiplier, Keybinds Unlocked, Skip Intro, Run Customizer, More Players, Mod Menu, Pinned Challenges).</div></li>
+      </ol>
+
+      <h2 style="margin-top:18px">Файлы на диске</h2>
+      <div class="files">
+        <div class="file"><code>C:\Dev\SpellBrigade\PinnedChallenges\nexus\PinnedChallenges-1.0.0.zip</code><span>архив для загрузки</span></div>
+        <div class="file"><code>C:\Dev\SpellBrigade\PinnedChallenges\nexus\description.bbcode</code><span>описание</span></div>
+        <div class="file"><code>C:\Dev\SpellBrigade\PinnedChallenges\nexus\thumbnail.png</code><span>основное изображение, 1280×720</span></div>
+        <div class="file"><code>C:\Dev\SpellBrigade\PinnedChallenges\nexus\header.png</code><span>шапка страницы, 1400×400</span></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script type="text/plain" id="bbcode-source">
+[center][size=6][b][color=#f5c542]Pinned Challenges[/color][/b][/size]
+[size=3][i]Pin the challenges you're chasing and watch their progress during the run.[/i][/size]
+
+[size=2]Version 1.0.0 · The Spell Brigade 1.1.4 · MelonLoader 0.7[/size][/center]
+
+[line]
+
+[size=5][b][color=#f5c542]Features[/color][/b][/size]
+
+[list]
+[*][b]Pin from the Challenges menu[/b] — click a challenge card: the pin in its corner turns gold. Up to 3 at a time by default (1–5 in the settings); pinning one more replaces the oldest.
+[*][b]See them during the run[/b] — compact cards with the challenge icon, its description in your language, a progress bar and a live counter like [b]366 / 1 066[/b].
+[*][b]Done is done[/b] — a completed challenge turns gold and is unpinned by the next run.
+[*][b]Out of the way[/b] — the cards hide while the upgrade screen is open and come back after your pick.
+[*][b]Put them anywhere[/b] — drag the cards with the mouse, resize them with the wheel or the corner handle. Saved as a share of the screen, so it fits any resolution.
+[*][b]Your look[/b] — card size, game-style or plain background, background opacity and text opacity separately.
+[/list]
+
+[line]
+
+[size=5][b][color=#f5c542]Installation[/color][/b][/size]
+
+[list=1]
+[*]Install [url=https://github.com/LavaGang/MelonLoader/releases]MelonLoader[/url] (0.7.x) for The Spell Brigade and launch the game once.
+[*]Put [b]PinnedChallenges.dll[/b] into [font=Courier New]<Game folder>\Mods\[/font]
+[*]Open the Challenges menu, click the cards you want, start a run.
+[/list]
+
+[b]Settings[/b] live in [url=https://github.com/Everelsu/SpellBrigade/tree/main/ModMenu]Mod Menu[/url] ([b]Options → Mods → Pinned Challenges[/b]): card size, background, text opacity, how many can be pinned, [b]Card position[/b] (the drag-and-drop editor) and [b]Unpin all[/b]. Mod Menu is optional — without it, the same values are in [font=Courier New]UserData\MelonPreferences.cfg[/font].
+
+[line]
+
+[size=5][b][color=#f5c542]FAQ[/color][/b][/size]
+
+[b]Does it work in co-op?[/b]
+Yes. Challenges are yours alone, so the cards show your own progress; other players don't need the mod.
+
+[b]Can I pin with a controller?[/b]
+Pinning is a click on the card, so it needs a mouse for now. [b]Unpin all[/b] in Mod Menu works with a controller.
+
+[b]How do I uninstall?[/b]
+Delete [b]PinnedChallenges.dll[/b] from the Mods folder.
+
+[line]
+
+[size=5][b][color=#f5c542]Changelog[/color][/b][/size]
+
+[b]1.0.0[/b]
+[list]
+[*]Initial release
+[/list]
+
+[line]
+
+[spoiler]
+[size=5][b]Описание на русском[/b][/size]
+
+[b]Pinned Challenges[/b] — закрепите испытания, которые выполняете, и следите за прогрессом прямо в забеге.
+
+[b]Возможности[/b]
+[list]
+[*][b]Закрепление в меню испытаний[/b] — клик по карточке, булавка в углу становится золотой. По умолчанию до 3 сразу (1–5 в настройках); лишнее вытесняет самое старое.
+[*][b]В забеге[/b] — компактные карточки: иконка, описание на языке игры, полоска прогресса и счётчик вроде «366 / 1 066», обновляется на лету.
+[*][b]Выполненное[/b] становится золотым и открепляется к следующему забегу.
+[*][b]Не мешают[/b] — на экране выбора улучшения карточки прячутся.
+[*][b]Где угодно[/b] — карточки перетаскиваются мышью, размер — колесом или уголком. Положение хранится долями экрана.
+[*][b]Внешний вид[/b] — размер, фон в стиле игры или простой, прозрачность фона и текста отдельно.
+[/list]
+
+[b]Установка[/b]
+[list=1]
+[*]Установите [url=https://github.com/LavaGang/MelonLoader/releases]MelonLoader[/url] 0.7.x и один раз запустите игру.
+[*]Положите [b]PinnedChallenges.dll[/b] в папку [font=Courier New]<папка игры>\Mods\[/font].
+[*]Откройте меню испытаний, кликните по нужным карточкам и начинайте забег.
+[/list]
+
+[b]Настройки[/b] — в Mod Menu: [b]Настройки → Моды → Pinned Challenges[/b]. Без Mod Menu те же значения есть в [font=Courier New]UserData\MelonPreferences.cfg[/font].
+
+[b]Удаление:[/b] удалите DLL из папки Mods.
+[/spoiler]
+</script>
+<script>
+(function () {
+  var source = document.getElementById("bbcode-source").textContent.replace(/^\n+|\n+$/g, "");
+
+  function esc(s) {
+    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  // Небольшой конвертер BBCode → HTML для тех тегов, что есть в описании
+  function render(bb) {
+    var codes = [];
+    bb = bb.replace(/\[code\]([\s\S]*?)\[\/code\]/g, function (_, c) {
+      codes.push(c.replace(/^\n/, ""));
+      return "\u0000" + (codes.length - 1) + "\u0000";
+    });
+    var h = esc(bb);
+    h = h.replace(/\[b\]/g, "<b>").replace(/\[\/b\]/g, "</b>")
+         .replace(/\[i\]/g, "<i>").replace(/\[\/i\]/g, "</i>")
+         .replace(/\[u\]/g, "<u>").replace(/\[\/u\]/g, "</u>")
+         .replace(/\[center\]/g, '<div class="center">').replace(/\[\/center\]/g, "</div>")
+         .replace(/\[size=(\d)\]/g, '<span class="s$1">').replace(/\[\/size\]/g, "</span>")
+         .replace(/\[color=(#[0-9a-fA-F]{3,6})\]/g, '<span style="color:$1">').replace(/\[\/color\]/g, "</span>")
+         .replace(/\[font=[^\]]*\]/g, '<span class="mono">').replace(/\[\/font\]/g, "</span>")
+         .replace(/\[url=([^\]]+)\]/g, '<a href="$1" target="_blank" rel="noopener">').replace(/\[\/url\]/g, "</a>")
+         .replace(/\[line\]/g, "<hr>")
+         .replace(/\[spoiler\]/g, "<details><summary>Spoiler</summary>").replace(/\[\/spoiler\]/g, "</details>")
+         .replace(/\[list=1\]\s*/g, "<ol>").replace(/\[list\]\s*/g, "<ul>");
+    // закрывающие [/list]: ol или ul — по ближайшему открытому
+    var out = "", stack = [], re = /<ol>|<ul>|\[\/list\]/g, last = 0, m;
+    while ((m = re.exec(h))) {
+      out += h.slice(last, m.index);
+      if (m[0] === "[/list]") { out += "</li></" + (stack.pop() || "ul") + ">"; }
+      else { stack.push(m[0] === "<ol>" ? "ol" : "ul"); out += m[0]; }
+      last = re.lastIndex;
+    }
+    h = out + h.slice(last);
+    h = h.replace(/\[\*\]/g, "</li><li>").replace(/<(ol|ul)><\/li>/g, "<$1>");
+    h = h.replace(/\s*<\/li><li>/g, "</li><li>").replace(/\s*<\/li><\/(ol|ul)>\s*/g, "</li></$1>");
+    h = h.replace(/\n/g, "<br>").replace(/(<\/(?:ol|ul|details|div)>|<hr>|<(?:ol|ul)>|<summary>[^<]*<\/summary>)<br>/g, "$1");
+    h = h.replace(/\u0000(\d+)\u0000/g, function (_, i) { return "<pre>" + esc(codes[+i]) + "</pre>"; });
+    return h;
+  }
+
+  document.getElementById("preview").innerHTML = render(source);
+  document.getElementById("raw").textContent = source;
+
+  var summary = document.getElementById("f-summary");
+  document.getElementById("f-summary-count").textContent = summary.textContent.length + " / 350 символов";
+
+  var tabs = [["tab-preview", "panel-preview"], ["tab-raw", "panel-raw"]];
+  tabs.forEach(function (pair) {
+    document.getElementById(pair[0]).addEventListener("click", function () {
+      tabs.forEach(function (p) {
+        var on = p[0] === pair[0];
+        document.getElementById(p[0]).setAttribute("aria-selected", on ? "true" : "false");
+        document.getElementById(p[1]).hidden = !on;
+      });
+    });
+  });
+
+  function selectText(el) {
+    var range = document.createRange();
+    range.selectNodeContents(el);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+
+  document.querySelectorAll("button.copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var id = btn.getAttribute("data-copy");
+      var text = id === "bbcode-source" ? source : document.getElementById(id).textContent;
+      var label = btn.textContent;
+      function done(msg) {
+        btn.textContent = msg;
+        btn.classList.add("done");
+        setTimeout(function () { btn.textContent = label; btn.classList.remove("done"); }, 1600);
+      }
+      var fallback = function () {
+        if (id === "bbcode-source") {
+          document.getElementById("tab-raw").click();
+          selectText(document.getElementById("raw"));
+        } else {
+          selectText(document.getElementById(id));
+        }
+        done("Выделено — Ctrl+C");
+      };
+      try {
+        navigator.clipboard.writeText(text).then(function () { done("Скопировано"); }, fallback);
+      } catch (e) { fallback(); }
+    });
+  });
+})();
+</script>
