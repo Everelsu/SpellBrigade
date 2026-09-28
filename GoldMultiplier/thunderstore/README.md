@@ -2,7 +2,7 @@
 
 *Earn more gold, level faster and rank up your wizards — all configurable.*
 
-Version 2.5.0 · The Spell Brigade 1.1.4 · MelonLoader 0.7
+Version 2.6.0 · The Spell Brigade 1.1.4 · MelonLoader 0.7
 
 ## Features
 
@@ -57,6 +57,12 @@ Yes, including Keybinds Unlocked — both add their own things to the Options me
 English, Русский, Українська, Deutsch, Français, Italiano, Nederlands, Polski, Português (Brasil), Português (Portugal), Español (España), Español (México), 日本語, 한국어, 简体中文, 繁體中文, ไทย
 
 ## Changelog
+
+**2.6.0**
+
+- Mod Menu integration: with Mod Menu installed, all settings move to Options → Mods → Gold & XP Multiplier (the separate Multipliers tab is hidden)
+- New: option to turn off the end-of-run x2 reveal
+- Mouse wheel over a selector changes its value
 
 **2.5.0**
 

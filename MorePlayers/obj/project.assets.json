@@ -30,7 +30,7 @@
     "C:\\Users\\egord\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "restore": {
       "projectUniqueName": "C:\\Dev\\SpellBrigade\\MorePlayers\\MorePlayers.csproj",
       "projectName": "MorePlayers",

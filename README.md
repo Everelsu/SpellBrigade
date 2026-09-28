@@ -63,7 +63,7 @@
   <tr>
     <td width="50%" valign="top">
       <img src="GoldMultiplier/nexus/thumbnail.png" alt="Gold & XP Multiplier"/>
-      <h3>💰 Gold &amp; XP Multiplier <sub>2.5.0</sub></h3>
+      <h3>💰 Gold &amp; XP Multiplier <sub>2.6.0</sub></h3>
       <ul>
         <li>Multiplies run gold (base reward and every bonus), run XP and wizard rank XP</li>
         <li>Settings in <b>Options → Multipliers</b>, or in <b>Options → Mods</b> with Mod Menu; changes apply instantly</li>
@@ -73,7 +73,7 @@
     </td>
     <td width="50%" valign="top">
       <img src="Keybinds/nexus/thumbnail.png" alt="Keybinds Unlocked"/>
-      <h3>⌨️ Keybinds Unlocked <sub>1.0.1</sub></h3>
+      <h3>⌨️ Keybinds Unlocked <sub>1.1.0</sub></h3>
       <ul>
         <li>Real rebinding in <b>Options → Controls</b>: keyboard, mouse and controller</li>
         <li>On-screen key icons follow your new keys, missing icons are drawn in the game's style</li>
@@ -85,7 +85,7 @@
   <tr>
     <td width="50%" valign="top">
       <img src="RunCustomizer/nexus/thumbnail.png" alt="Run Customizer"/>
-      <h3>🎲 Run Customizer <sub>1.0.0</sub></h3>
+      <h3>🎲 Run Customizer <sub>1.1.0</sub></h3>
       <ul>
         <li><b>Random</b> difficulty: enemy strength, spawn speed, enemy count and health drops each rolled separately, or a random base difficulty</li>
         <li><b>Custom</b> difficulty: set all four yourself</li>
@@ -95,7 +95,7 @@
     </td>
     <td width="50%" valign="top">
       <img src="SkipIntro/nexus/thumbnail.png" alt="Skip Intro"/>
-      <h3>⏭️ Skip Intro <sub>1.0.0</sub></h3>
+      <h3>⏭️ Skip Intro <sub>1.1.0</sub></h3>
       <ul>
         <li>No studio logos, no intro videos: the game opens straight to the menu</li>
         <li>Uses the game's own skip; can be switched off in Mod Menu</li>
@@ -105,7 +105,7 @@
   </tr>
   <tr>
     <td colspan="2" valign="top">
-      <h3>👥 More Players <sub>1.0.0</sub></h3>
+      <h3>👥 More Players <sub>1.1.0</sub></h3>
       <ul>
         <li>Up to <b>8 players</b> by default, from 4 to 16: in the lobby player list (host), in Mod Menu, or <code>MaxPlayers</code> in <code>MelonPreferences.cfg</code></li>
         <li>Lobby split into rooms of 4 seats, the full player list on <b>Tab</b></li>

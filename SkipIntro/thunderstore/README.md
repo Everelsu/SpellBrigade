@@ -1,6 +1,6 @@
 # Skip Intro
 
-Version 1.0.0 · The Spell Brigade 1.1.4 · MelonLoader 0.7
+Version 1.1.0 · The Spell Brigade 1.1.4 · MelonLoader 0.7
 
 ## What it skips
 
@@ -31,6 +31,10 @@ Yes. It only affects your own game start; other players don't need it.
 Yes, including Gold & XP Multiplier and Keybinds Unlocked.
 
 ## Changelog
+
+**1.1.0**
+
+- Mod Menu integration: Skip Intro can be switched off in Options → Mods
 
 **1.0.0**
 

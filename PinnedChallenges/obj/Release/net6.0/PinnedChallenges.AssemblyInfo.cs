@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PinnedChallenges")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a178bfa2374ae6beea5d6ae05a9fbd65cd12c0d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0cb14efe7b2b70dd795de53ac08ea0e13a36d0e6")]
 [assembly: System.Reflection.AssemblyProductAttribute("PinnedChallenges")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PinnedChallenges")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

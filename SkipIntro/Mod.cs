@@ -5,7 +5,7 @@ using Il2Cpp;
 using MelonLoader;
 using SpellBrigade.Shared;
 
-[assembly: MelonInfo(typeof(SkipIntro.SkipIntroMod), "Skip Intro", "1.0.0", "Relsev")]
+[assembly: MelonInfo(typeof(SkipIntro.SkipIntroMod), "Skip Intro", "1.1.0", "Relsev")]
 [assembly: MelonGame("BoltBlasterGames", "TheSpellBrigade")]
 
 namespace SkipIntro;

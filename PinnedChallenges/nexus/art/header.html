@@ -8,10 +8,8 @@
 
   /* карточки закреплённых испытаний — как в забеге */
   .cards { width: 560px; display: grid; gap: 12px; font-family: "Source Sans 3", "Segoe UI", sans-serif; }
-  .card { display: grid; grid-template-columns: 72px 1fr; gap: 16px; align-items: center; padding: 12px 16px; background: rgba(13, 10, 23, .78); }
-  .badge { width: 72px; height: 72px; display: grid; place-items: center; background: #1b1722; border: 3px solid rgba(255, 255, 255, .85);
-           border-radius: 14px; }
-  .badge svg { width: 40px; fill: #fff; }
+  .card { display: grid; grid-template-columns: 72px 1fr; gap: 16px; align-items: center; padding: 12px 16px; background: rgba(24, 23, 29, .9); }
+  .badge { width: 72px; height: 72px; object-fit: cover; -webkit-mask-image: radial-gradient(circle, #000 58%, transparent 71%); }
   .text { color: #fff; font-size: 24px; font-weight: 600; line-height: 1.15; }
   .meta { display: flex; align-items: center; gap: 14px; margin-top: 10px; }
   .bar { flex: 1; height: 5px; background: rgba(255, 255, 255, .15); }
@@ -25,12 +23,12 @@
     <div class="title">Pinned Challenges</div>
     <div class="cards">
       <div class="card">
-        <div class="badge"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L2 9.5l7.1-.6z"/></svg></div>
+        <img class="badge" src="icon_sacrifice.png">
         <div><div class="text">As Ludwig, sacrifice 1 066 enemies.</div>
           <div class="meta"><div class="bar"><i style="width:34%"></i></div><div class="count">366 / 1 066</div></div></div>
       </div>
       <div class="card">
-        <div class="badge"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg></div>
+        <img class="badge" src="icon_moon.png">
         <div><div class="text">As Moon Mage, destroy 54 pieces of Coral.</div>
           <div class="meta"><div class="bar"><i style="width:72%"></i></div><div class="count">39 / 54</div></div></div>
       </div>

@@ -7,7 +7,7 @@ using MelonLoader;
 using MelonLoader.Preferences;
 using SpellBrigade.Shared;
 
-[assembly: MelonInfo(typeof(GoldXpMultiplier.GoldXpMod), "Gold & XP Multiplier", "2.5.0", "Relsev")]
+[assembly: MelonInfo(typeof(GoldXpMultiplier.GoldXpMod), "Gold & XP Multiplier", "2.6.0", "Relsev")]
 [assembly: MelonGame("BoltBlasterGames", "TheSpellBrigade")]
 [assembly: MelonOptionalDependencies("ModMenu")] // без Mod Menu — своя вкладка «Множители»
 

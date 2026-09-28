@@ -6,7 +6,7 @@ using MelonLoader.Preferences;
 using SpellBrigade.Shared;
 using UnityEngine;
 
-[assembly: MelonInfo(typeof(MorePlayers.MorePlayersMod), "More Players", "1.0.0", "Relsev")]
+[assembly: MelonInfo(typeof(MorePlayers.MorePlayersMod), "More Players", "1.1.0", "Relsev")]
 [assembly: MelonGame("BoltBlasterGames", "TheSpellBrigade")]
 [assembly: MelonOptionalDependencies("ModMenu")] // без Mod Menu мод работает как раньше
 

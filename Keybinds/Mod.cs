@@ -3,7 +3,7 @@ using Il2Cpp;
 using MelonLoader;
 using SpellBrigade.Shared;
 
-[assembly: MelonInfo(typeof(KeybindsUnlocked.KeybindsMod), "Keybinds Unlocked", "1.0.1", "Relsev")]
+[assembly: MelonInfo(typeof(KeybindsUnlocked.KeybindsMod), "Keybinds Unlocked", "1.1.0", "Relsev")]
 [assembly: MelonGame("BoltBlasterGames", "TheSpellBrigade")]
 [assembly: MelonOptionalDependencies("ModMenu")] // без Mod Menu мод работает как раньше
 
