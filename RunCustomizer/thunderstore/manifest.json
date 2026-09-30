@@ -1,6 +1,6 @@
 {
   "name": "RunCustomizer",
-  "version_number": "1.1.0",
+  "version_number": "1.1.1",
   "website_url": "https://github.com/Everelsu/SpellBrigade",
   "description": "Random and custom difficulty, plus a random wizard pick, right in the game's menus. Requires MelonLoader. Obviously...",
   "dependencies": [

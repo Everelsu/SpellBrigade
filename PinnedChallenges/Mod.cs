@@ -4,7 +4,7 @@ using MelonLoader;
 using MelonLoader.Preferences;
 using SpellBrigade.Shared;
 
-[assembly: MelonInfo(typeof(PinnedChallenges.PinnedChallengesMod), "Pinned Challenges", "1.0.0", "Relsev")]
+[assembly: MelonInfo(typeof(PinnedChallenges.PinnedChallengesMod), "Pinned Challenges", "1.0.1", "Relsev")]
 [assembly: MelonGame("BoltBlasterGames", "TheSpellBrigade")]
 [assembly: MelonOptionalDependencies("ModMenu")] // без Mod Menu мод работает как раньше
 

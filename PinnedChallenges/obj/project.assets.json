@@ -2,7 +2,7 @@
   "version": 4,
   "targets": {
     "net6.0": {
-      "ModMenu/1.0.0": {
+      "ModMenu/1.0.1": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
@@ -15,7 +15,7 @@
     }
   },
   "libraries": {
-    "ModMenu/1.0.0": {
+    "ModMenu/1.0.1": {
       "type": "project",
       "path": "../ModMenu/ModMenu.csproj",
       "msbuildProject": "../ModMenu/ModMenu.csproj"
@@ -23,14 +23,14 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "ModMenu >= 1.0.0"
+      "ModMenu >= 1.0.1"
     ]
   },
   "packageFolders": {
     "C:\\Users\\egord\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "restore": {
       "projectUniqueName": "C:\\Dev\\SpellBrigade\\PinnedChallenges\\PinnedChallenges.csproj",
       "projectName": "PinnedChallenges",

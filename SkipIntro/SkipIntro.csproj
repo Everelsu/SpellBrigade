@@ -9,7 +9,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <DebugType>none</DebugType>
     <GenerateDependencyFile>false</GenerateDependencyFile>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
   </PropertyGroup>
@@ -20,8 +20,13 @@
     <InteropRoot>$(GameRoot)\MelonLoader\Il2CppAssemblies</InteropRoot>
   </PropertyGroup>
 
+  <!-- Mod Menu необязателен: dll не копируется, раздел регистрируется только если он установлен -->
+  <ItemGroup Label="Mod Menu">
+    <ProjectReference Include="..\ModMenu\ModMenu.csproj" Private="false" />
+  </ItemGroup>
+
   <ItemGroup Label="Shared code">
-    <Compile Include="..\Shared\Hooks.cs;..\Shared\SharedCodeGuard.cs" />
+    <Compile Include="..\Shared\Hooks.cs;..\Shared\SharedCodeGuard.cs;..\Shared\Localizer.cs" />
   </ItemGroup>
 
   <ItemGroup Label="MelonLoader core">
@@ -46,6 +51,26 @@
   <ItemGroup Label="UnityEngine interop">
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>$(InteropRoot)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(InteropRoot)\UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>$(InteropRoot)\UnityEngine.UIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(InteropRoot)\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(InteropRoot)\Unity.TextMeshPro.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.Localization">
+      <HintPath>$(InteropRoot)\Unity.Localization.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>

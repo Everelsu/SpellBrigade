@@ -2,7 +2,7 @@
 
 *Random and custom difficulty, plus a random wizard pick — right in the game's menus.*
 
-Version 1.1.0 · The Spell Brigade 1.1.4 · MelonLoader 0.7
+Version 1.1.1 · The Spell Brigade 1.1.4 · MelonLoader 0.7
 
 ## Features
 
@@ -53,6 +53,11 @@ Delete **RunCustomizer.dll** from the Mods folder. The game goes back to its nor
 Yes... With all my mods. (I will change it if not)
 
 ## Changelog
+
+**1.1.1**
+
+- Fixed: settings in Mod Menu now switch language together with the game (they stayed in the first language)
+- Latin American Spanish translation
 
 **1.1.0**
 

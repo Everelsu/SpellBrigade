@@ -148,9 +148,9 @@
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Nexus Mods · The Spell Brigade · новый мод</div>
-    <h1>Pinned Challenges <span class="x">1.0.0</span></h1>
-    <p class="lede">Всё, чтобы создать страницу мода: поля для заполнения, описание в BBCode с предпросмотром и порядок действий. Кнопка «Копировать» кладёт текст в буфер обмена, дальше вставляете в редактор Nexus.</p>
+    <div class="eyebrow">Nexus Mods · The Spell Brigade · обновление</div>
+    <h1>Pinned Challenges <span class="x">1.0.1</span></h1>
+    <p class="lede">Всё, чтобы обновить страницу мода: поля, которые надо заменить, описание в BBCode с предпросмотром и порядок действий. Кнопка «Копировать» кладёт текст в буфер обмена, дальше вставляете в редактор Nexus.</p>
   </header>
 
   <div class="layout">
@@ -170,7 +170,7 @@
 
       <div class="field">
         <div class="field-head"><span class="field-name">Версия</span><button class="copy" data-copy="f-version">Копировать</button></div>
-        <div class="field-value mono" id="f-version">1.0.0</div>
+        <div class="field-value mono" id="f-version">1.0.1</div>
       </div>
 
       <div class="field">
@@ -191,8 +191,9 @@
       </div>
 
       <div class="field">
-        <div class="field-head"><span class="field-name">Changelog 1.0.0</span><button class="copy" data-copy="f-changelog">Копировать</button></div>
-        <div class="field-value" id="f-changelog">Initial release</div>
+        <div class="field-head"><span class="field-name">Changelog 1.0.1</span><button class="copy" data-copy="f-changelog">Копировать</button></div>
+        <div class="field-value" id="f-changelog">Fixed: settings in Mod Menu now switch language together with the game (they stayed in the first language)
+Latin American Spanish translation</div>
       </div>
     </aside>
 
@@ -208,17 +209,15 @@
 
       <h2 style="margin-top:18px">Порядок действий</h2>
       <ol class="steps">
-        <li><div><b>Upload → Add mod:</b> игра The Spell Brigade, название, Summary, версия и категория — значения слева.</div></li>
-        <li><div><b>Description:</b> переключите редактор в режим BBCode (значок <span class="path">[ ]</span>) и вставьте описание.</div></li>
-        <li><div><b>Files:</b> загрузите <span class="path">PinnedChallenges-1.0.0.zip</span> как Main file, версия 1.0.0.</div></li>
-        <li><div><b>Requirements:</b> добавьте MelonLoader как off-site требование.</div></li>
-        <li><div><b>Images:</b> <span class="path">thumbnail.png</span> (1280×720) — основное изображение (Primary), <span class="path">header.png</span> (1400×400) — шапка страницы (Header). Скриншоты меню испытаний с булавками и карточек в забеге тоже будут кстати.</div></li>
-        <li><div><b>По желанию:</b> добавьте Mod Menu как необязательное требование (Nexus-мод) — в нём настройки карточек, и ссылку отсюда туда.</div></li>
+        <li><div><b>Files → Add file:</b> загрузите <span class="path">PinnedChallenges-1.0.1.zip</span> как Main file, версия 1.0.1. Файл 1.0.0 перенесите в Old versions.</div></li>
+        <li><div><b>Edit → Details:</b> поменяйте версию мода на значение слева.</div></li>
+        <li><div><b>Description:</b> в разделе Changelog своего описания добавьте блок 1.0.1 — строки из поля «Changelog 1.0.1» слева. Остальное описание не трогайте.</div></li>
+        <li><div><b>Changelogs:</b> добавьте запись для 1.0.1 с теми же строками.</div></li>
       </ol>
 
       <h2 style="margin-top:18px">Файлы на диске</h2>
       <div class="files">
-        <div class="file"><code>C:\Dev\SpellBrigade\PinnedChallenges\nexus\PinnedChallenges-1.0.0.zip</code><span>архив для загрузки</span></div>
+        <div class="file"><code>C:\Dev\SpellBrigade\PinnedChallenges\nexus\PinnedChallenges-1.0.1.zip</code><span>архив для загрузки</span></div>
         <div class="file"><code>C:\Dev\SpellBrigade\PinnedChallenges\nexus\description.bbcode</code><span>описание</span></div>
         <div class="file"><code>C:\Dev\SpellBrigade\PinnedChallenges\nexus\thumbnail.png</code><span>основное изображение, 1280×720</span></div>
         <div class="file"><code>C:\Dev\SpellBrigade\PinnedChallenges\nexus\header.png</code><span>шапка страницы, 1400×400</span></div>
@@ -231,7 +230,7 @@
 [center][size=6][b][color=#f5c542]Pinned Challenges[/color][/b][/size]
 [size=3][i]Pin the challenges you're chasing and watch their progress during the run.[/i][/size]
 
-[size=2]Version 1.0.0 · The Spell Brigade 1.1.4 · MelonLoader 0.7[/size][/center]
+[size=2]Version 1.0.1 · The Spell Brigade 1.1.4 · MelonLoader 0.7[/size][/center]
 
 [line]
 
@@ -256,7 +255,7 @@
 [*]Open the Challenges menu, click the cards you want, start a run.
 [/list]
 
-[b]Settings[/b] live in [url=https://github.com/Everelsu/SpellBrigade/tree/main/ModMenu]Mod Menu[/url] ([b]Options → Mods → Pinned Challenges[/b]): card size, background, text opacity, how many can be pinned, [b]Card position[/b] (the drag-and-drop editor) and [b]Unpin all[/b]. Mod Menu is optional — without it, the same values are in [font=Courier New]UserData\MelonPreferences.cfg[/font].
+[b]Settings[/b] live in [url=https://www.nexusmods.com/thespellbrigade/mods/16]Mod Menu[/url] ([b]Options → Mods → Pinned Challenges[/b]): card size, background, text opacity, how many can be pinned, [b]Card position[/b] (the drag-and-drop editor) and [b]Unpin all[/b]. Mod Menu is optional — without it, the same values are in [font=Courier New]UserData\MelonPreferences.cfg[/font].
 
 [line]
 
@@ -274,6 +273,12 @@ Delete [b]PinnedChallenges.dll[/b] from the Mods folder.
 [line]
 
 [size=5][b][color=#f5c542]Changelog[/color][/b][/size]
+
+[b]1.0.1[/b]
+[list]
+[*]Fixed: settings in Mod Menu now switch language together with the game (they stayed in the first language)
+[*]Latin American Spanish translation
+[/list]
 
 [b]1.0.0[/b]
 [list]

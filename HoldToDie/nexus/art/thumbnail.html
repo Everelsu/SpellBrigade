@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<style>
+  .scene { background-position: 50% 0%; }
+  .shade { background: radial-gradient(circle at 50% 42%, rgba(60, 8, 12, .35) 0%, rgba(6, 9, 20, .72) 60%); }
+  .content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 34px; padding-bottom: 40px; }
+  .hold { width: 300px; height: 300px; }
+  .hold .track, .hold .fill { stroke-width: 22; }
+  .key { width: 128px; height: 128px; border-width: 9px; font-size: 84px; }
+  .title { font-size: 92px; }
+</style></head>
+<body><div class="canvas">
+  <div class="scene"></div><div class="shade"></div>
+  <div class="content">
+    <div class="hold">
+      <!-- r=139, длина окружности ≈ 873; заполнено на 72% -->
+      <svg viewBox="0 0 300 300"><circle class="track" cx="150" cy="150" r="139"/>
+        <circle class="fill" cx="150" cy="150" r="139" stroke-dasharray="629 873"/></svg>
+      <div class="key">K</div>
+    </div>
+    <div class="title">Hold to Die</div>
+  </div>
+</div></body></html>

@@ -5,8 +5,9 @@ using Il2Cpp;
 using MelonLoader;
 using SpellBrigade.Shared;
 
-[assembly: MelonInfo(typeof(SkipIntro.SkipIntroMod), "Skip Intro", "1.1.0", "Relsev")]
+[assembly: MelonInfo(typeof(SkipIntro.SkipIntroMod), "Skip Intro", "1.1.1", "Relsev")]
 [assembly: MelonGame("BoltBlasterGames", "TheSpellBrigade")]
+[assembly: MelonOptionalDependencies("ModMenu")] // без Mod Menu настройка — в MelonPreferences.cfg
 
 namespace SkipIntro;
 
@@ -18,10 +19,13 @@ public class SkipIntroMod : MelonMod
     public override void OnInitializeMelon()
     {
         Log = LoggerInstance;
-        // UserData/MelonPreferences.cfg, секция [SkipIntro]; в Mod Menu — сам, без кода
+        // UserData/MelonPreferences.cfg, секция [SkipIntro]
         var category = MelonPreferences.CreateCategory("SkipIntro", "Skip Intro");
         _enabled = category.CreateEntry("Enabled", true, "Skip Intro", "Пропускать логотипы и вступительные ролики");
         category.SaveToFile(false);
+        if (FindMelon("Mod Menu", "Relsev") != null)
+            try { MenuPage.Register(_enabled, () => category.SaveToFile(false)); }
+            catch (Exception e) { Log.Warning($"Mod Menu page: {e.Message}"); }
         // Хук именно на Start: его вызывает сам Unity, поэтому он не может быть встроен
         // в другой метод. OpeningFlow.Execute IL2CPP встроил прямо в Start —
         // хук на Execute никогда не срабатывает.

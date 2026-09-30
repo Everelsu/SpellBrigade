@@ -4,7 +4,7 @@ using MelonLoader;
 using MelonLoader.Preferences;
 using SpellBrigade.Shared;
 
-[assembly: MelonInfo(typeof(SpellBrigade.ModMenu.ModMenuMod), "Mod Menu", "1.0.0", "Relsev")]
+[assembly: MelonInfo(typeof(SpellBrigade.ModMenu.ModMenuMod), "Mod Menu", "1.0.1", "Relsev")]
 [assembly: MelonGame("BoltBlasterGames", "TheSpellBrigade")]
 
 namespace SpellBrigade.ModMenu;

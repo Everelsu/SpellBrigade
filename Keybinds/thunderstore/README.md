@@ -2,7 +2,7 @@
 
 *Rebind every key and controller button — right in the game's Options menu.*
 
-Version 1.1.0 · The Spell Brigade 1.1.4 · MelonLoader 0.7
+Version 1.2.0 · The Spell Brigade 1.1.4 · MelonLoader 0.7
 
 ## Features
 
@@ -43,6 +43,12 @@ Yes, including Gold & XP Multiplier — both add their own things to the Options
 English, Русский, Українська, Deutsch, Français, Italiano, Nederlands, Polski, Português (Brasil), Português (Portugal), Español (España), Español (México), 日本語, 한국어, 简体中文, 繁體中文, ไทย
 
 ## Changelog
+
+**1.2.0**
+
+- New: Die (hold) key for the Hold to Die mod (K / L3 by default), shown when Hold to Die is installed
+- Fixed: settings in Mod Menu now switch language together with the game (they stayed in the first language)
+- Latin American Spanish translation
 
 **1.1.0**
 

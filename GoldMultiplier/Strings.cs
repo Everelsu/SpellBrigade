@@ -40,6 +40,8 @@ internal static class Strings
             "As alterações aplicam-se de imediato. x1 = original.\nNo co-op, o XP da partida funciona se o anfitrião tiver o mod.", "Multiplicador do mod", "Animação x2 no fim da partida" },
         ["es"] = new[] { "Multiplicadores", "Mod activado", "Activado", "Desactivado", "Oro por partida", "XP de la partida", "XP de rango del mago",
             "Los cambios se aplican al instante. x1 = original.\nEn cooperativo, la XP de la partida funciona si el anfitrión tiene el mod.", "Multiplicador del mod", "Animación x2 al final de la partida" },
+        ["es-mx"] = new[] { "Multiplicadores", "Mod activado", "Activado", "Desactivado", "Oro por partida", "XP de la partida", "XP de rango del mago",
+            "Los cambios se aplican al instante. x1 = original.\nEn cooperativo, la XP de la partida funciona si el anfitrión tiene el mod.", "Multiplicador del mod", "Animación x2 al final de la partida" },
         ["ja"] = new[] { "倍率", "MOD有効", "オン", "オフ", "ラン毎のゴールド", "ラン中の経験値", "魔法使いランク経験値",
             "変更はすぐに反映されます。x1 = オリジナル。\n協力プレイでは、ホストがMODを導入している場合にラン中の経験値が有効です。", "MOD倍率", "ラン終了時の x2 演出" },
         ["ko"] = new[] { "배율", "모드 활성화", "켜기", "끄기", "런당 골드", "런 경험치", "마법사 랭크 경험치",

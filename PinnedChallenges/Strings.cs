@@ -40,6 +40,8 @@ internal static class Strings
             "Arraste os cartões com o rato", "Enter ou clique direito — concluído · R — posição predefinida", "Concluído", "Predefinição", "Fundo dos cartões", "Máximo afixados", "Roda do rato ou canto — tamanho", "Texto e ícones", "Fundo ao estilo do jogo" },
         ["es"] = new[] { "Tamaño de tarjetas en partida", "Desfijar todo", "Posición de tarjetas",
             "Arrastra las tarjetas con el ratón", "Enter o clic derecho — listo · R — posición predeterminada", "Listo", "Predeterminado", "Fondo de tarjetas", "Máximo fijados", "Rueda del ratón o esquina — tamaño", "Texto e iconos", "Fondo al estilo del juego" },
+        ["es-mx"] = new[] { "Tamaño de tarjetas en partida", "Desfijar todo", "Posición de tarjetas",
+            "Arrastra las tarjetas con el mouse", "Enter o clic derecho — listo · R — posición predeterminada", "Listo", "Predeterminado", "Fondo de tarjetas", "Máximo fijados", "Rueda del mouse o esquina — tamaño", "Texto e iconos", "Fondo al estilo del juego" },
         ["ja"] = new[] { "ラン中のカードサイズ", "すべて追跡解除", "カードの位置",
             "マウスでカードをドラッグ", "Enter または右クリックで完了 · R で初期位置", "完了", "初期位置", "カードの背景", "追跡できる最大数", "ホイールまたは角 — サイズ", "テキストとアイコン", "ゲーム風の背景" },
         ["ko"] = new[] { "런 중 카드 크기", "모두 추적 해제", "카드 위치",

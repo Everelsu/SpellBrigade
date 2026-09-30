@@ -5,7 +5,7 @@
   },
   "projects": {
     "C:\\Dev\\SpellBrigade\\Keybinds\\KeybindsUnlocked.csproj": {
-      "version": "1.1.0",
+      "version": "1.2.0",
       "restore": {
         "projectUniqueName": "C:\\Dev\\SpellBrigade\\Keybinds\\KeybindsUnlocked.csproj",
         "projectName": "KeybindsUnlocked",
@@ -86,7 +86,7 @@
       }
     },
     "C:\\Dev\\SpellBrigade\\ModMenu\\ModMenu.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "restore": {
         "projectUniqueName": "C:\\Dev\\SpellBrigade\\ModMenu\\ModMenu.csproj",
         "projectName": "ModMenu",

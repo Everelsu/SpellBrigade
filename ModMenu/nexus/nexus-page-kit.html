@@ -148,9 +148,9 @@
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Nexus Mods · The Spell Brigade · новый мод</div>
-    <h1>Mod Menu <span class="x">1.0.0</span></h1>
-    <p class="lede">Всё, чтобы создать страницу мода: поля для заполнения, описание в BBCode с предпросмотром и порядок действий. Кнопка «Копировать» кладёт текст в буфер обмена, дальше вставляете в редактор Nexus.</p>
+    <div class="eyebrow">Nexus Mods · The Spell Brigade · обновление</div>
+    <h1>Mod Menu <span class="x">1.0.1</span></h1>
+    <p class="lede">Всё, чтобы обновить страницу мода: поля, которые надо заменить, описание в BBCode с предпросмотром и порядок действий. Кнопка «Копировать» кладёт текст в буфер обмена, дальше вставляете в редактор Nexus.</p>
   </header>
 
   <div class="layout">
@@ -170,7 +170,7 @@
 
       <div class="field">
         <div class="field-head"><span class="field-name">Версия</span><button class="copy" data-copy="f-version">Копировать</button></div>
-        <div class="field-value mono" id="f-version">1.0.0</div>
+        <div class="field-value mono" id="f-version">1.0.1</div>
       </div>
 
       <div class="field">
@@ -191,8 +191,9 @@
       </div>
 
       <div class="field">
-        <div class="field-head"><span class="field-name">Changelog 1.0.0</span><button class="copy" data-copy="f-changelog">Копировать</button></div>
-        <div class="field-value" id="f-changelog">Initial release</div>
+        <div class="field-head"><span class="field-name">Changelog 1.0.1</span><button class="copy" data-copy="f-changelog">Копировать</button></div>
+        <div class="field-value" id="f-changelog">Fixed: settings in Mod Menu now switch language together with the game (they stayed in the first language)
+Latin American Spanish translation</div>
       </div>
     </aside>
 
@@ -208,17 +209,15 @@
 
       <h2 style="margin-top:18px">Порядок действий</h2>
       <ol class="steps">
-        <li><div><b>Upload → Add mod:</b> игра The Spell Brigade, название, Summary, версия и категория — значения слева.</div></li>
-        <li><div><b>Description:</b> переключите редактор в режим BBCode (значок <span class="path">[ ]</span>) и вставьте описание.</div></li>
-        <li><div><b>Files:</b> загрузите <span class="path">ModMenu-1.0.0.zip</span> как Main file, версия 1.0.0.</div></li>
-        <li><div><b>Requirements:</b> добавьте MelonLoader как off-site требование.</div></li>
-        <li><div><b>Images:</b> <span class="path">thumbnail.png</span> (1280×720) — основное изображение (Primary), <span class="path">header.png</span> (1400×400) — шапка страницы (Header). Скриншот вкладки «Моды» с открытым разделом и поиском тоже будет кстати.</div></li>
-        <li><div><b>По желанию:</b> на страницах остальных модов (Gold &amp; XP Multiplier, Keybinds Unlocked, Run Customizer, More Players, Pinned Challenges, Skip Intro) добавьте ссылку на Mod Menu, и наоборот.</div></li>
+        <li><div><b>Files → Add file:</b> загрузите <span class="path">ModMenu-1.0.1.zip</span> как Main file, версия 1.0.1. Файл 1.0.0 перенесите в Old versions.</div></li>
+        <li><div><b>Edit → Details:</b> поменяйте версию мода на значение слева.</div></li>
+        <li><div><b>Description:</b> в разделе Changelog своего описания добавьте блок 1.0.1 — строки из поля «Changelog 1.0.1» слева. Остальное описание не трогайте.</div></li>
+        <li><div><b>Changelogs:</b> добавьте запись для 1.0.1 с теми же строками.</div></li>
       </ol>
 
       <h2 style="margin-top:18px">Файлы на диске</h2>
       <div class="files">
-        <div class="file"><code>C:\Dev\SpellBrigade\ModMenu\nexus\ModMenu-1.0.0.zip</code><span>архив для загрузки</span></div>
+        <div class="file"><code>C:\Dev\SpellBrigade\ModMenu\nexus\ModMenu-1.0.1.zip</code><span>архив для загрузки</span></div>
         <div class="file"><code>C:\Dev\SpellBrigade\ModMenu\nexus\description.bbcode</code><span>описание</span></div>
         <div class="file"><code>C:\Dev\SpellBrigade\ModMenu\nexus\thumbnail.png</code><span>основное изображение, 1280×720</span></div>
         <div class="file"><code>C:\Dev\SpellBrigade\ModMenu\nexus\header.png</code><span>шапка страницы, 1400×400</span></div>
@@ -231,7 +230,7 @@
 [center][size=6][b][color=#f5c542]Mod Menu[/color][/b][/size]
 [size=3][i]One place for every mod's settings — right in the game's Options.[/i][/size]
 
-[size=2]Version 1.0.0 · The Spell Brigade 1.1.4 · MelonLoader 0.7[/size][/center]
+[size=2]Version 1.0.1 · The Spell Brigade 1.1.4 · MelonLoader 0.7[/size][/center]
 
 [line]
 
@@ -244,7 +243,7 @@
 [*][b]Reset to default[/b] — a ↻ icon appears next to every changed setting, [b]Defaults ↻[/b] next to a mod's name resets the whole mod. [b]Delete[/b] works on the selected row.
 [*][b]Mouse wheel on every selector[/b] — hover any [b]‹ value ›[/b] selector and scroll to change it. Works in the game's own menus too.
 [*][b]Works with any mod[/b] — every MelonPreferences setting shows up automatically: on/off switches, numbers limited to their range, lists. No changes to other mods needed.
-[*][b]16 languages[/b] — follows the game's language.
+[*][b]17 languages[/b] — follows the game's language.
 [/list]
 
 [line]
@@ -289,6 +288,12 @@ Delete [b]ModMenu.dll[/b] from the Mods folder. Your settings stay.
 
 [size=5][b][color=#f5c542]Changelog[/color][/b][/size]
 
+[b]1.0.1[/b]
+[list]
+[*]Fixed: settings in Mod Menu now switch language together with the game (they stayed in the first language)
+[*]Latin American Spanish translation
+[/list]
+
 [b]1.0.0[/b]
 [list]
 [*]Initial release
@@ -309,7 +314,7 @@ Delete [b]ModMenu.dll[/b] from the Mods folder. Your settings stay.
 [*][b]Сброс[/b] — значок ↻ у каждой изменённой настройки, «По умолчанию ↻» у названия мода сбрасывает весь мод. Delete на выбранной строке тоже сбрасывает.
 [*][b]Колесо мыши[/b] над любым переключателем «‹ значение ›» меняет значение — и в меню игры тоже.
 [*][b]С любым модом[/b] — настройки MelonPreferences появляются сами, без изменений в модах.
-[*][b]16 языков[/b] — меню говорит на языке игры.
+[*][b]17 языков[/b] — меню говорит на языке игры.
 [/list]
 
 [b]Установка[/b]

@@ -155,6 +155,18 @@ internal static class Strings
             "Qué es aleatorio", "Cada parámetro", "Dificultad base", "Elegido: sabrás quién es al empezar la partida",
             "Dificultad", "Estándar",
         },
+        ["es-mx"] = new[]
+        {
+            "Aleatoria", "Cada parámetro se sortea por separado, desde más fácil que la dificultad más baja hasta más duro que la más alta. Verás el resultado al empezar la partida.",
+            "Personalizada", "Ajusta la dificultad tú mismo. La bonificación de oro sigue a la dificultad resultante.",
+            "Aleatoria", "Al empezar la partida se sortea una de las dificultades desbloqueadas.",
+            "Fuerza enemiga", "Velocidad de aparición", "Cantidad de enemigos", "Curación",
+            "Mago aleatorio", "Mago sorpresa", "Cualquiera de tus magos desbloqueados",
+            "Haz clic y la ruleta elegirá un mago desbloqueado al azar.",
+            "El mago se sortea al empezar la partida. Hasta entonces, la sala muestra tu mago anterior; solo tú ves magos al azar parpadear en tu lugar.",
+            "Qué es aleatorio", "Cada parámetro", "Dificultad base", "Elegido: sabrás quién es al empezar la partida",
+            "Dificultad", "Estándar",
+        },
         ["ja"] = new[]
         {
             "ランダム", "各項目が個別に抽選されます。最も易しい難易度より易しいものから、最も難しい難易度より厳しいものまで。結果はラン開始時に分かります。",

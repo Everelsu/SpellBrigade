@@ -27,4 +27,4 @@ Built for The Spell Brigade 1.1.4. If a game update changes a hooked method, tha
 ## Links
 
 - Source, issues and the other mods: [github.com/Everelsu/SpellBrigade](https://github.com/Everelsu/SpellBrigade)
-- 16 languages, following the game's language. Translation fixes are welcome in issues.
+- 17 languages, following the game's language. Translation fixes are welcome in issues.

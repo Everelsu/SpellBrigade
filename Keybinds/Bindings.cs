@@ -41,18 +41,27 @@ internal static class Bindings
     // Свои действия мода — отдельной картой. В модель (копию набора игры) она добавляется,
     // поэтому переназначение, сохранение и сброс работают как у действий игры; слушает её
     // своя копия (_modAsset). id постоянные: переназначения сопоставляются по ним.
-    public const string ModMap = "KeybindsUnlocked", ToggleSpells = "ToggleSpells";
+    // HoldToDie читает мод Hold to Die (через AppDomain, ключ HoldToDieKey): клавиша и кнопка
+    // контроллера для него настраиваются здесь, в общем списке управления.
+    public const string ModMap = "KeybindsUnlocked", ToggleSpells = "ToggleSpells", HoldToDie = "HoldToDie";
+    private const string HoldToDieKey = "SpellBrigade.Input.HoldToDie";
     private const string ModMapJson = @"{
       ""name"": ""KeybindsUnlocked"", ""id"": ""6f1d7a52-3c1e-4b8e-9d57-0d3c2b6a9e11"",
       ""actions"": [
         { ""name"": ""ToggleSpells"", ""type"": ""Button"", ""id"": ""8a2f4c61-5b7d-4e19-a3c8-2e6d9f1b7c42"",
+          ""expectedControlType"": ""Button"", ""processors"": """", ""interactions"": """", ""initialStateCheck"": false },
+        { ""name"": ""HoldToDie"", ""type"": ""Button"", ""id"": ""5e9c1b3d-7a24-4f6e-b081-3c5d7e9f1a26"",
           ""expectedControlType"": ""Button"", ""processors"": """", ""interactions"": """", ""initialStateCheck"": false }
       ],
       ""bindings"": [
         { ""name"": """", ""id"": ""c3e5a7b9-1d2f-4a6c-8e0b-9f7d5c3a1e24"", ""path"": ""<Keyboard>/h"", ""interactions"": """",
           ""processors"": """", ""groups"": """", ""action"": ""ToggleSpells"", ""isComposite"": false, ""isPartOfComposite"": false },
         { ""name"": """", ""id"": ""d4f6b8c0-2e3a-4b7d-9f1c-0a8e6d4b2f35"", ""path"": ""<Gamepad>/rightStickPress"", ""interactions"": """",
-          ""processors"": """", ""groups"": """", ""action"": ""ToggleSpells"", ""isComposite"": false, ""isPartOfComposite"": false }
+          ""processors"": """", ""groups"": """", ""action"": ""ToggleSpells"", ""isComposite"": false, ""isPartOfComposite"": false },
+        { ""name"": """", ""id"": ""a7c9e1f3-4b6d-4d8f-a2c4-6e8a0c2e4f68"", ""path"": ""<Keyboard>/k"", ""interactions"": """",
+          ""processors"": """", ""groups"": """", ""action"": ""HoldToDie"", ""isComposite"": false, ""isPartOfComposite"": false },
+        { ""name"": """", ""id"": ""b8d0f2a4-5c7e-4e9a-b3d5-7f9b1d3f5a79"", ""path"": ""<Gamepad>/leftStickPress"", ""interactions"": """",
+          ""processors"": """", ""groups"": """", ""action"": ""HoldToDie"", ""isComposite"": false, ""isPartOfComposite"": false }
       ]
     }";
 
@@ -94,6 +103,7 @@ internal static class Bindings
             _modAsset.hideFlags = HideFlags.HideAndDontSave;
             _toggleSpells = _modAsset.FindAction(ModMap + "/" + ToggleSpells, false);
             _modAsset.Enable();
+            AppDomain.CurrentDomain.SetData(HoldToDieKey, _modAsset.FindAction(ModMap + "/" + HoldToDie, false));
         }
         catch (Exception e) { KeybindsMod.Log.Warning($"can't create mod actions: {e.Message}"); }
 

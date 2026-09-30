@@ -27,6 +27,7 @@ internal static class Strings
         ["pt-br"] = new[] { "Mods", "Mod", "Ligado", "Desligado", "Pesquisar", "Nada encontrado", "Padrão" },
         ["pt"] = new[] { "Mods", "Mod", "Ligado", "Desligado", "Pesquisar", "Nada encontrado", "Predefinições" },
         ["es"] = new[] { "Mods", "Mod", "Activado", "Desactivado", "Buscar", "No se encontró nada", "Predeterminado" },
+        ["es-mx"] = new[] { "Mods", "Mod", "Activado", "Desactivado", "Buscar", "No se encontró nada", "Predeterminado" },
         ["ja"] = new[] { "MOD", "MOD", "オン", "オフ", "検索", "見つかりません", "初期設定" },
         ["ko"] = new[] { "모드", "모드", "켜기", "끄기", "검색", "결과 없음", "기본값" },
         ["zh-hans"] = new[] { "模组", "模组", "开", "关", "搜索", "未找到", "默认" },

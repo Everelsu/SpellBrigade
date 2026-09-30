@@ -27,6 +27,7 @@ internal static class Strings
         ["pt-br"] = new[] { "Jogadores", "Sala", "Máx. de jogadores", "você" },
         ["pt"] = new[] { "Jogadores", "Sala", "Máx. de jogadores", "tu" },
         ["es"] = new[] { "Jugadores", "Sala", "Máx. de jugadores", "tú" },
+        ["es-mx"] = new[] { "Jugadores", "Sala", "Máx. de jugadores", "tú" },
         ["ja"] = new[] { "プレイヤー", "ルーム", "最大人数", "あなた" },
         ["ko"] = new[] { "플레이어", "방", "최대 인원", "나" },
         ["zh-hans"] = new[] { "玩家", "房间", "最大人数", "你" },

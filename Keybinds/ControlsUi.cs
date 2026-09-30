@@ -258,6 +258,8 @@ internal static class ControlsUi
             };
         yield return R(Strings.QuickChatClose, "Gameplay/QuickChatCancel");
         yield return R(Strings.ToggleSpells, Bindings.ModMap + "/" + Bindings.ToggleSpells);
+        if (MelonBase.FindMelon("Hold to Die", "Relsev") != null)
+            yield return R(Strings.HoldToDie, Bindings.ModMap + "/" + Bindings.HoldToDie);
 
         yield return Section(Strings.Menus);
         yield return Mirrored(R(Strings.NextTab, "UI/NextCategory"), "UI/NextStatCategory");

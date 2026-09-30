@@ -20,6 +20,7 @@ internal sealed class Localizer
     private readonly List<(TMP_Text text, Func<string> value)> _bound = new();
     private readonly List<Action> _listeners = new();
     private string[] _current;
+    private string _code; // язык, для которого выбран _current
     private TMP_Text _fontSample;
     private bool _subscribed;
 
@@ -30,9 +31,11 @@ internal sealed class Localizer
         _log = log;
     }
 
+    // Язык сверяем при каждом вызове: подписи Mod Menu читают Get, не подписываясь на смену
+    // языка, а порядок событий между модами не гарантирован
     public string Get(string key)
     {
-        _current ??= Resolve(_fontSample);
+        if (_current == null || _code != LocaleCode()) _current = Resolve(_fontSample);
         int i = Array.IndexOf(_keys, key);
         return i >= 0 && i < _current.Length ? _current[i] : key;
     }
@@ -83,10 +86,15 @@ internal sealed class Localizer
             try { listener(); } catch (Exception e) { _log()?.Warning($"[lang] {e.Message}"); }
     }
 
+    private static string LocaleCode()
+    {
+        try { return LocalizationSettings.SelectedLocale?.Identifier.Code ?? "en"; }
+        catch { return "en"; }
+    }
+
     private string[] Resolve(TMP_Text fontSample)
     {
-        string code = "en";
-        try { code = LocalizationSettings.SelectedLocale?.Identifier.Code ?? "en"; } catch { }
+        string code = _code = LocaleCode();
         string key = TableKey(code);
         if (key != "en" && fontSample != null && !FontHasAll(fontSample, key))
         {
@@ -104,9 +112,13 @@ internal sealed class Localizer
             key = code.Contains("hant") || code.Contains("tw") || code.Contains("hk") ? "zh-hant" : "zh-hans";
         else if (code.StartsWith("pt"))
             key = code.Contains("br") ? "pt-br" : "pt";
+        else if (code.StartsWith("es"))
+            key = code == "es" || code.Contains("es-es") ? "es" : "es-mx"; // es-MX, es-419 — Латинская Америка
         else
             key = code.Split('-')[0];
-        return _table.ContainsKey(key) ? key : "en";
+        if (_table.ContainsKey(key)) return key;
+        string language = key.Split('-')[0]; // нет варианта (es-mx) — общий язык (es)
+        return _table.ContainsKey(language) ? language : "en";
     }
 
     private bool FontHasAll(TMP_Text sample, string key)

@@ -1,6 +1,6 @@
 {
   "name": "KeybindsUnlocked",
-  "version_number": "1.1.0",
+  "version_number": "1.2.0",
   "website_url": "https://github.com/Everelsu/SpellBrigade",
   "description": "Rebind every key and controller button right in Options → Controls. Yes, before the official update. I think the mod will become outdated soon. Requires MelonLoader.",
   "dependencies": [
