@@ -56,6 +56,7 @@ Yes... With all my mods. (I will change it if not)
 
 **1.1.1**
 
+- Fixed: on the end-of-run screen with many Covenants bound, the rolled multipliers no longer overlap the gold section — they fold into a compact block
 - Fixed: settings in Mod Menu now switch language together with the game (they stayed in the first language)
 - Latin American Spanish translation
 

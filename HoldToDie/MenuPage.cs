@@ -20,11 +20,15 @@ internal static class MenuPage
             .Toggle(() => Strings.Get(Strings.Enabled), () => HoldToDieMod.EnabledEntry.Value, v => Set(HoldToDieMod.EnabledEntry, v),
                 HoldToDieMod.EnabledEntry.DefaultValue);
         // с Keybinds Unlocked клавиша (и кнопка контроллера) — в «Настройки → Управление»
-        if (MelonBase.FindMelon("Keybinds Unlocked", "Relsev") != null)
+        if (Death.KeybindsInstalled)
             page.Note(() => Strings.Get(Strings.KeyInControls));
         else
             page.Choice(() => Strings.Get(Strings.Key), () => KeyOptions(), () => KeyOptions().IndexOf(HoldToDieMod.KeyEntry.Value),
-                i => Set(HoldToDieMod.KeyEntry, KeyOptions()[i]), KeyNames.IndexOf(HoldToDieMod.KeyEntry.DefaultValue));
+                    i => Set(HoldToDieMod.KeyEntry, KeyOptions()[i]), KeyNames.IndexOf(HoldToDieMod.KeyEntry.DefaultValue))
+                .Choice(() => Strings.Get(Strings.Gamepad), () => PadOptions(),
+                    () => System.Array.IndexOf(Death.GamepadButtons, HoldToDieMod.GamepadEntry.Value),
+                    i => Set(HoldToDieMod.GamepadEntry, Death.GamepadButtons[i]),
+                    System.Array.IndexOf(Death.GamepadButtons, HoldToDieMod.GamepadEntry.DefaultValue));
         page.Number(() => Strings.Get(Strings.HoldTime), 0.5f, 5f, 0.5f, () => HoldToDieMod.HoldTimeEntry.Value,
                 v => Set(HoldToDieMod.HoldTimeEntry, v),
                 v => string.Format(Strings.Get(Strings.Seconds), v.ToString("0.0", CultureInfo.InvariantCulture)),
@@ -39,6 +43,14 @@ internal static class MenuPage
         string current = HoldToDieMod.KeyEntry.Value;
         if (KeyNames.Contains(current)) return KeyNames;
         var options = new List<string>(KeyNames) { current };
+        return options;
+    }
+
+    private static string[] PadOptions()
+    {
+        var options = new string[Death.GamepadButtons.Length];
+        for (int i = 0; i < options.Length; i++)
+            options[i] = Death.GamepadName(Death.GamepadButtons[i]) ?? Strings.Get(Strings.NoButton);
         return options;
     }
 

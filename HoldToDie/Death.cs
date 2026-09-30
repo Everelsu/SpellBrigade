@@ -71,9 +71,6 @@ internal static class Death
         // С Keybinds Unlocked клавиша и кнопка контроллера настраиваются там, в «Управлении»
         if (AppDomain.CurrentDomain.GetData("SpellBrigade.Input.HoldToDie") is InputAction action) return action.IsPressed();
 
-        var keyboard = Keyboard.current;
-        if (keyboard == null) return false;
-
         string name = HoldToDieMod.KeyEntry.Value;
         if (name != _keyName)
         {
@@ -84,8 +81,37 @@ internal static class Death
                 HoldToDieMod.Log.Warning($"unknown key \"{name}\" — use names like K, Backspace, Delete, End, F9");
             }
         }
-        return _key != Key.None && keyboard[_key].isPressed;
+        var keyboard = Keyboard.current;
+        if (keyboard != null && _key != Key.None && keyboard[_key].isPressed) return true;
+
+        var pad = Gamepad.current;
+        if (pad == null) return false;
+        return HoldToDieMod.GamepadEntry.Value switch
+        {
+            "L3" => pad.leftStickButton.isPressed,
+            "R3" => pad.rightStickButton.isPressed,
+            "Select" => pad.selectButton.isPressed,
+            _ => false,
+        };
     }
+
+    // Кнопки контроллера на выбор (без Keybinds Unlocked). Игра не занимает L3; R3 и Select
+    // у неё свободны в забеге, но R3 у Keybinds Unlocked — «показать / скрыть заклинания».
+    public static readonly string[] GamepadButtons = { "L3", "R3", "Select", "None" };
+
+    public static string GamepadName(string value) => value == "None" ? null : value;
+
+    // Иконка игры для кнопки (в стиле Xbox, как в родной колонке «Контроллер»)
+    public static string GamepadSprite(string value) => value switch
+    {
+        "L3" => "key_xbox_L",
+        "R3" => "key_xbox_R",
+        "Select" => "key_xbox_select",
+        _ => null,
+    };
+
+    private static bool? _keybinds;
+    public static bool KeybindsInstalled => _keybinds ??= MelonLoader.MelonBase.FindMelon("Keybinds Unlocked", "Relsev") != null;
 
     // Свой живой волшебник, если сейчас можно умереть: идёт забег, нет паузы и окна улучшений
     private static GameplayPlayer LocalPlayer(GameplayPlayerManager manager)

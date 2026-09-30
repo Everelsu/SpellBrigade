@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ModMenu")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.1+b0a18e31fbbccfc5486a019e99de7d8c78bd5831")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.1+1566233baf0b4e4453bc0696be73827f74ea9253")]
 [assembly: System.Reflection.AssemblyProductAttribute("ModMenu")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ModMenu")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.1.0")]

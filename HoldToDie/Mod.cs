@@ -17,7 +17,7 @@ public class HoldToDieMod : MelonMod
     // UserData/MelonPreferences.cfg, секция [HoldToDie]
     private static MelonPreferences_Category _category;
     internal static MelonPreferences_Entry<bool> EnabledEntry, NoRevivesEntry;
-    internal static MelonPreferences_Entry<string> KeyEntry;
+    internal static MelonPreferences_Entry<string> KeyEntry, GamepadEntry;
     internal static MelonPreferences_Entry<float> HoldTimeEntry;
 
     public override void OnInitializeMelon()
@@ -27,11 +27,17 @@ public class HoldToDieMod : MelonMod
         EnabledEntry = _category.CreateEntry("Enabled", true, "Enabled", "Удерживать клавишу в забеге — умереть");
         KeyEntry = _category.CreateEntry("Key", "K", "Key",
             "Клавиша, названия как в Unity Input System: K, Backspace, Delete, End, F9…");
+        GamepadEntry = _category.CreateEntry("GamepadButton", "L3", "Controller Button",
+            "Кнопка контроллера: L3, R3, Select или None. С Keybinds Unlocked клавиша и кнопка — в его списке управления");
         HoldTimeEntry = _category.CreateEntry("HoldTime", 2f, "Hold Time", "Сколько секунд держать клавишу",
             validator: new ValueRange<float>(0.5f, 5f));
         NoRevivesEntry = _category.CreateEntry("NoRevives", false, "No Revives",
             "true — без воскрешений: если вы последний живой (соло или хост), забег сразу заканчивается");
         _category.SaveToFile(false);
+
+        // Без Keybinds Unlocked клавиша видна в родном «Настройки → Управление»
+        Hooks.Patch(HarmonyInstance, Log, typeof(Il2Cpp.SettingsPanel), nameof(Il2Cpp.SettingsPanel.SetupSubPanels),
+                    typeof(ControlsRow), postfix: nameof(ControlsRow.InjectPostfix));
 
         Log.Msg("ready — hold the key in a run to die");
 
@@ -47,5 +53,7 @@ public class HoldToDieMod : MelonMod
         WheelSelect.Tick(); // колесо мыши над «< значение >» листает варианты
         try { Death.Tick(); }
         catch (Exception e) { Log.Error(e); Death.Reset(); }
+        try { ControlsRow.Tick(); }
+        catch (Exception e) { Log.Warning($"Options → Controls row: {e.Message}"); }
     }
 }

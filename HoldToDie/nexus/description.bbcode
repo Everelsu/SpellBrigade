@@ -8,7 +8,7 @@
 [size=5][b][color=#f5c542]Features[/color][/b][/size]
 
 [list]
-[*][b]Hold to die[/b] — in a run, hold [b]K[/b]: a red ring fills around your wizard, and when it closes, you die. Let go earlier and nothing happens.
+[*][b]Hold to die[/b] — in a run, hold [b]K[/b] or [b]L3[/b] on a controller: a red ring fills around your wizard, and when it closes, you die. Let go earlier and nothing happens.
 [*][b]A real death[/b] — the game handles the rest as usual: ghost, revive circle, end-of-run screen and rewards. Invulnerability and dodge don't get in the way.
 [*][b]Two modes[/b]:
 [list]
@@ -16,8 +16,9 @@
 [*][b]No revives[/b] — if you are the last one standing, the run ends right away, without spending a revive token.
 [/list]
 [*][b]No accidents[/b] — doesn't work in menus, on pause or while the upgrade screen is open, and after dying you have to release the key before it can trigger again.
-[*][b]Your key and timing[/b] — K, L, Backspace, Delete, End, Insert or F8–F10 (none of them is used by the game), hold time from 0.5 to 5 seconds.
-[*][b]Works with [url=https://www.nexusmods.com/thespellbrigade/mods/13]Keybinds Unlocked[/url][/b] — with it installed, [b]Die (hold)[/b] appears in [b]Options → Controls[/b]: set any key and a controller button there (default K and L3).
+[*][b]Your key and timing[/b] — K, L, Backspace, Delete, End, Insert or F8–F10 (none of them is used by the game), controller button L3, R3 or Select, hold time from 0.5 to 5 seconds.
+[*][b]Shown in the game's controls[/b] — [b]Die (hold)[/b] is added to [b]Options → Controls[/b] with your key and button, so you always know what to hold.
+[*][b]Works with [url=https://www.nexusmods.com/thespellbrigade/mods/13]Keybinds Unlocked[/url][/b] — with it installed, [b]Die (hold)[/b] joins its list in [b]Options → Controls[/b]: rebind it to any key or controller button there.
 [*][b]17 languages[/b] — settings follow the game's language.
 [/list]
 
@@ -28,10 +29,10 @@
 [list=1]
 [*]Install [url=https://github.com/LavaGang/MelonLoader/releases]MelonLoader[/url] (0.7.x) for The Spell Brigade and launch the game once.
 [*]Put [b]HoldToDie.dll[/b] into [font=Courier New]<Game folder>\Mods\[/font]
-[*]Start a run and hold [b]K[/b].
+[*]Start a run and hold [b]K[/b] (or [b]L3[/b] on a controller).
 [/list]
 
-[b]Settings[/b] live in [url=https://www.nexusmods.com/thespellbrigade/mods/16]Mod Menu[/url] ([b]Options → Mods → Hold to Die[/b]): on/off, key, hold time and death mode. Mod Menu is optional — without it, the same values are in [font=Courier New]UserData\MelonPreferences.cfg[/font], section [font=Courier New][HoldToDie][/font]. Any key name from Unity's Input System works there, e.g. [font=Courier New]Key = Backspace[/font].
+[b]Settings[/b] live in [url=https://www.nexusmods.com/thespellbrigade/mods/16]Mod Menu[/url] ([b]Options → Mods → Hold to Die[/b]): on/off, key, controller button, hold time and death mode. Mod Menu is optional — without it, the same values are in [font=Courier New]UserData\MelonPreferences.cfg[/font], section [font=Courier New][HoldToDie][/font]. Any key name from Unity's Input System works there, e.g. [font=Courier New]Key = Backspace[/font], and [font=Courier New]GamepadButton[/font] is L3, R3, Select or None.
 
 [line]
 
@@ -41,7 +42,7 @@
 Yes, and other players don't need the mod. "No revives" ends the run only when you are the host and the last one alive: revive tokens are shared by the whole team, so the mod never takes them away while someone else is still fighting. In every other case it's a normal death.
 
 [b]Can I use it with a controller?[/b]
-Yes, together with Keybinds Unlocked: hold [b]L3[/b] (left stick press) or any button you set in [b]Options → Controls[/b]. Without it — keyboard only.
+Yes: hold [b]L3[/b] (left stick press). R3 or Select can be picked in Mod Menu; with Keybinds Unlocked — any button, in [b]Options → Controls[/b].
 
 [b]How do I uninstall?[/b]
 Delete [b]HoldToDie.dll[/b] from the Mods folder.
@@ -64,12 +65,13 @@ Delete [b]HoldToDie.dll[/b] from the Mods folder.
 
 [b]Возможности[/b]
 [list]
-[*][b]Удержание[/b] — в забеге держите [b]K[/b]: вокруг волшебника заполняется красное кольцо, замкнулось — смерть. Отпустили раньше — ничего не произошло.
+[*][b]Удержание[/b] — в забеге держите [b]K[/b] или [b]L3[/b] на контроллере: вокруг волшебника заполняется красное кольцо, замкнулось — смерть. Отпустили раньше — ничего не произошло.
 [*][b]Настоящая смерть[/b] — дальше всё как обычно в игре: призрак, круг воскрешения, экран итогов и награды. Неуязвимость и уклонение не мешают.
 [*][b]Два режима[/b]: [b]с воскрешением[/b] (по умолчанию) — обычная смерть, вас могут воскресить жетоном или союзники; [b]без воскрешений[/b] — если вы последний живой, забег сразу заканчивается, жетон не тратится.
 [*][b]Без случайностей[/b] — не работает в меню, на паузе и на экране улучшений; после смерти клавишу нужно отпустить.
-[*][b]Своя клавиша и время[/b] — K, L, Backspace, Delete, End, Insert или F8–F10 (игра их не использует), держать от 0,5 до 5 секунд.
-[*][b]Дружит с Keybinds Unlocked[/b] — с ним в [b]Настройки → Управление[/b] появляется «Умереть (удерживать)»: любая клавиша и кнопка контроллера (по умолчанию K и L3).
+[*][b]Своя клавиша и время[/b] — K, L, Backspace, Delete, End, Insert или F8–F10 (игра их не использует), кнопка контроллера L3, R3 или Select, держать от 0,5 до 5 секунд.
+[*][b]Видно в управлении игры[/b] — в [b]Настройки → Управление[/b] появляется «Умереть (удерживать)» с вашей клавишей и кнопкой.
+[*][b]Дружит с Keybinds Unlocked[/b] — с ним «Умереть (удерживать)» переназначается в его списке [b]Настройки → Управление[/b] на любую клавишу или кнопку.
 [*][b]17 языков[/b] — настройки на языке игры.
 [/list]
 
@@ -77,7 +79,7 @@ Delete [b]HoldToDie.dll[/b] from the Mods folder.
 [list=1]
 [*]Установите [url=https://github.com/LavaGang/MelonLoader/releases]MelonLoader[/url] 0.7.x и один раз запустите игру.
 [*]Положите [b]HoldToDie.dll[/b] в папку [font=Courier New]<папка игры>\Mods\[/font].
-[*]Начните забег и зажмите [b]K[/b].
+[*]Начните забег и зажмите [b]K[/b] (или [b]L3[/b] на контроллере).
 [/list]
 
 [b]Настройки[/b] — в Mod Menu: [b]Настройки → Моды → Hold to Die[/b]. Без Mod Menu те же значения есть в [font=Courier New]UserData\MelonPreferences.cfg[/font], раздел [font=Courier New][HoldToDie][/font].
