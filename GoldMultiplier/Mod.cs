@@ -7,7 +7,7 @@ using MelonLoader;
 using MelonLoader.Preferences;
 using SpellBrigade.Shared;
 
-[assembly: MelonInfo(typeof(GoldXpMultiplier.GoldXpMod), "Gold & XP Multiplier", "2.6.1", "Relsev")]
+[assembly: MelonInfo(typeof(GoldXpMultiplier.GoldXpMod), "Gold & XP Multiplier", "2.6.2", "Relsev")]
 [assembly: MelonGame("BoltBlasterGames", "TheSpellBrigade")]
 [assembly: MelonOptionalDependencies("ModMenu")] // без Mod Menu — своя вкладка «Множители»
 
@@ -55,6 +55,10 @@ public class GoldXpMod : MelonMod
 
         WarnAboutOldVersion();
         ApplyPatches();
+        // опыт в забеге у хоста меняется у всей команды — с ним без подбора, только друзья
+        MatchmakingGuard.Register(HarmonyInstance, Log, "Gold & XP Multiplier", () => Enabled && XpMultiplier != 1f
+            ? string.Format(Strings.Get(Strings.Matchmaking), "x" + XpMultiplier.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture))
+            : null);
         Log.Msg($"{_hooksInstalled}/{_hooksTotal} hooks — gold x{GoldMultiplier}, run xp x{XpMultiplier}, " +
                 $"rank xp x{RankXpMultiplier}{(Enabled ? "" : " (disabled)")}. Settings: Options → Multipliers");
     }
@@ -73,7 +77,11 @@ public class GoldXpMod : MelonMod
 
     internal static void SaveSettings() => _category.SaveToFile(false);
 
-    public override void OnUpdate() => WheelSelect.Tick(); // колесо мыши над «< значение >» листает варианты
+    public override void OnUpdate()
+    {
+        WheelSelect.Tick(); // колесо мыши над «< значение >» листает варианты
+        MatchmakingGuard.Tick();
+    }
 
     private static float Sanitize(float? value)
     {

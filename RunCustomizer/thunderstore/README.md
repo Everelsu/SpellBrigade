@@ -2,7 +2,7 @@
 
 *Random and custom difficulty, plus a random wizard pick — right in the game's menus.*
 
-Version 1.1.1 · The Spell Brigade 1.1.4 · MelonLoader 0.7
+Version 1.1.2 · The Spell Brigade 1.1.4 · MelonLoader 0.7
 
 ## Features
 
@@ -53,6 +53,10 @@ Delete **RunCustomizer.dll** from the Mods folder. The game goes back to its nor
 Yes... With all my mods. (I will change it if not)
 
 ## Changelog
+
+**1.1.2**
+
+- Matchmaking is locked while Random or Custom difficulty is selected — it changes the run for the whole squad, so players without the mod can't land in your runs. The Matchmaking switch is locked and the matchmaking window explains why; friends can still join by invite or lobby code
 
 **1.1.1**
 

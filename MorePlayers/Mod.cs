@@ -6,7 +6,7 @@ using MelonLoader.Preferences;
 using SpellBrigade.Shared;
 using UnityEngine;
 
-[assembly: MelonInfo(typeof(MorePlayers.MorePlayersMod), "More Players", "1.1.1", "Relsev")]
+[assembly: MelonInfo(typeof(MorePlayers.MorePlayersMod), "More Players", "1.1.2", "Relsev")]
 [assembly: MelonGame("BoltBlasterGames", "TheSpellBrigade")]
 [assembly: MelonOptionalDependencies("ModMenu")] // без Mod Menu мод работает как раньше
 
@@ -96,6 +96,11 @@ public class MorePlayersMod : MelonMod
           + Hook(typeof(GameplayPartyOverviewUI), nameof(GameplayPartyOverviewUI.RemovePlayerOverview), typeof(RunUi), null, nameof(RunUi.PartyChangedPostfix)));
 
         Log.Msg($"{found}/{Patches.Count} code patches, {hooks}/7 hooks — up to {MaxPlayers} players (everyone needs the mod)");
+        // больше 4 игроков — мод нужен всем в лобби; со случайными людьми без подбора, только друзья.
+        // С лимитом 4 мод ведёт себя как обычная игра — подбор свободен
+        MatchmakingGuard.Register(HarmonyInstance, Log, "More Players", () => MaxPlayers > MinPlayers
+            ? string.Format(Strings.Get(Strings.Matchmaking), MaxPlayers)
+            : null);
 
         if (FindMelon("Mod Menu", "Relsev") != null)
             try { MenuPage.Register(); }
@@ -125,6 +130,7 @@ public class MorePlayersMod : MelonMod
     public override void OnUpdate()
     {
         WheelSelect.Tick(); // колесо мыши над «< значение >» листает варианты
+        MatchmakingGuard.Tick();
         try { RunUi.Tick(); }
         catch (Exception e) { Log.Warning($"team stats: {e.Message}"); }
         try { PlayerList.Tick(); }

@@ -14,11 +14,12 @@ internal static class Strings
                         RandomWizard = "rw", SurpriseWizard = "sw", WizardAlias = "w_alias",
                         WizardDescInstant = "w_instant", WizardDescSurprise = "w_surprise",
                         RandomKind = "kind", KindAll = "kind_all", KindBase = "kind_base", WizardChosen = "w_chosen",
-                        Difficulty = "difficulty", Standard = "standard";
+                        Difficulty = "difficulty", Standard = "standard",
+                        Matchmaking = "mm";
 
     private static readonly string[] Keys =
         { RandomName, RandomDesc, CustomName, CustomDesc, BaseName, BaseDesc, Enemy, Spawn, Count, Health,
-          RandomWizard, SurpriseWizard, WizardAlias, WizardDescInstant, WizardDescSurprise, RandomKind, KindAll, KindBase, WizardChosen, Difficulty, Standard };
+          RandomWizard, SurpriseWizard, WizardAlias, WizardDescInstant, WizardDescSurprise, RandomKind, KindAll, KindBase, WizardChosen, Difficulty, Standard, Matchmaking };
 
     // порядок значений — как в Keys; языка нет в таблице — английский
     private static readonly Dictionary<string, string[]> Table = new()
@@ -33,7 +34,7 @@ internal static class Strings
             "Click it and the roulette picks a random unlocked wizard for you.",
             "A random wizard is picked when the run starts. Until then the lobby shows your previous wizard — only you see random ones flicker on your seat.",
             "What's random", "Every setting", "Base difficulty", "Picked — you'll see who it is when the run starts",
-            "Difficulty", "Standard",
+            "Difficulty", "Standard", "“{0}” difficulty is selected: it changes the run for the whole squad. Pick one of the game's difficulties to use matchmaking.",
         },
         ["ru"] = new[]
         {
@@ -45,7 +46,7 @@ internal static class Strings
             "Нажмите — рулетка выберет случайного открытого волшебника.",
             "Случайный волшебник выпадет в начале забега. До тех пор в лобби стоит прежний — только у вас на месте мелькают случайные.",
             "Что выпадает", "Каждый параметр", "Базовая сложность", "Выбран — узнаете, кто это, в начале забега",
-            "Сложность", "Обычная",
+            "Сложность", "Обычная", "выбрана сложность «{0}»: она меняет забег у всего отряда. Выберите одну из сложностей игры, чтобы включить подбор.",
         },
         ["uk"] = new[]
         {
@@ -57,7 +58,7 @@ internal static class Strings
             "Натисніть — рулетка обере випадкового відкритого чарівника.",
             "Випадковий чарівник випаде на початку забігу. До того в лобі стоїть попередній — лише у вас на місці миготять випадкові.",
             "Що випадає", "Кожен параметр", "Базова складність", "Обрано — дізнаєтеся, хто це, на початку забігу",
-            "Складність", "Звичайна",
+            "Складність", "Звичайна", "вибрано складність «{0}»: вона змінює забіг усьому загону. Виберіть одну зі складностей гри, щоб увімкнути підбір.",
         },
         ["de"] = new[]
         {
@@ -69,7 +70,7 @@ internal static class Strings
             "Klicke – das Roulette wählt einen zufälligen freigeschalteten Magier für dich.",
             "Ein zufälliger Magier wird zu Beginn des Durchlaufs gewählt. Bis dahin zeigt die Lobby deinen bisherigen Magier – nur du siehst auf deinem Platz zufällige aufblitzen.",
             "Was ist zufällig", "Jeder Wert", "Grundschwierigkeit", "Gewählt – wer es ist, siehst du zu Beginn des Durchlaufs",
-            "Schwierigkeit", "Standard",
+            "Schwierigkeit", "Standard", "Schwierigkeit „{0}“ ist gewählt: Sie verändert den Lauf für den ganzen Trupp. Wähle eine Schwierigkeit des Spiels, um Matchmaking zu nutzen.",
         },
         ["fr"] = new[]
         {
@@ -81,7 +82,7 @@ internal static class Strings
             "Cliquez et la roulette choisit pour vous un mage débloqué au hasard.",
             "Un mage est tiré au sort au début de la partie. D'ici là, le salon affiche votre mage précédent — vous seul voyez des mages au hasard défiler à votre place.",
             "Ce qui est aléatoire", "Chaque paramètre", "Difficulté de base", "Choisi — vous saurez qui c'est au début de la partie",
-            "Difficulté", "Standard",
+            "Difficulté", "Standard", "la difficulté « {0} » est choisie : elle modifie la partie pour toute l'escouade. Choisissez une difficulté du jeu pour utiliser le matchmaking.",
         },
         ["it"] = new[]
         {
@@ -93,7 +94,7 @@ internal static class Strings
             "Clicca e la roulette sceglie per te un mago sbloccato a caso.",
             "Il mago viene estratto all'inizio della partita. Fino ad allora la lobby mostra il mago precedente: solo tu vedi maghi casuali alternarsi al tuo posto.",
             "Cosa è casuale", "Ogni parametro", "Difficoltà base", "Scelto: scoprirai chi è all'inizio della partita",
-            "Difficoltà", "Standard",
+            "Difficoltà", "Standard", "è selezionata la difficoltà «{0}»: cambia la partita per tutta la squadra. Scegli una difficoltà del gioco per usare il matchmaking.",
         },
         ["nl"] = new[]
         {
@@ -105,7 +106,7 @@ internal static class Strings
             "Klik en de roulette kiest een willekeurige ontgrendelde tovenaar voor je.",
             "De tovenaar wordt aan het begin van de run geloot. Tot dan toont de lobby je vorige tovenaar — alleen jij ziet willekeurige tovenaars op je plek flitsen.",
             "Wat is willekeurig", "Elke waarde", "Basismoeilijkheid", "Gekozen — wie het is, zie je aan het begin van de run",
-            "Moeilijkheid", "Standaard",
+            "Moeilijkheid", "Standaard", "moeilijkheid ‘{0}’ is gekozen: die verandert de run voor de hele groep. Kies een moeilijkheid van het spel om matchmaking te gebruiken.",
         },
         ["pl"] = new[]
         {
@@ -117,7 +118,7 @@ internal static class Strings
             "Kliknij, a ruletka wybierze losowego odblokowanego maga.",
             "Mag zostanie wylosowany na początku wyprawy. Do tego czasu w poczekalni stoi poprzedni — tylko ty widzisz, jak na twoim miejscu migają losowi magowie.",
             "Co jest losowe", "Każdy parametr", "Poziom bazowy", "Wybrano — kto to, zobaczysz na początku wyprawy",
-            "Poziom trudności", "Standardowy",
+            "Poziom trudności", "Standardowy", "wybrano trudność „{0}”: zmienia wyprawę całemu oddziałowi. Wybierz jedną z trudności gry, aby używać dobierania.",
         },
         ["pt-br"] = new[]
         {
@@ -129,7 +130,7 @@ internal static class Strings
             "Clique e a roleta escolhe um mago desbloqueado aleatório para você.",
             "Um mago é sorteado no início da partida. Até lá, o lobby mostra seu mago anterior — só você vê magos aleatórios piscando no seu lugar.",
             "O que é aleatório", "Cada parâmetro", "Dificuldade base", "Escolhido — você saberá quem é no início da partida",
-            "Dificuldade", "Padrão",
+            "Dificuldade", "Padrão", "a dificuldade “{0}” está selecionada: ela muda a partida para todo o esquadrão. Escolha uma dificuldade do jogo para usar o matchmaking.",
         },
         ["pt"] = new[]
         {
@@ -141,7 +142,7 @@ internal static class Strings
             "Clique e a roleta escolhe um mago desbloqueado ao acaso.",
             "O mago é sorteado no início da partida. Até lá, o lobby mostra o seu mago anterior — só você vê magos aleatórios a piscar no seu lugar.",
             "O que é aleatório", "Cada parâmetro", "Dificuldade base", "Escolhido — saberá quem é no início da partida",
-            "Dificuldade", "Padrão",
+            "Dificuldade", "Padrão", "a dificuldade «{0}» está selecionada: muda a partida para todo o esquadrão. Escolhe uma dificuldade do jogo para usar o matchmaking.",
         },
         ["es"] = new[]
         {
@@ -153,7 +154,7 @@ internal static class Strings
             "Haz clic y la ruleta elegirá un mago desbloqueado al azar.",
             "El mago se sortea al empezar la partida. Hasta entonces, la sala muestra tu mago anterior; solo tú ves magos al azar parpadear en tu sitio.",
             "Qué es aleatorio", "Cada parámetro", "Dificultad base", "Elegido: sabrás quién es al empezar la partida",
-            "Dificultad", "Estándar",
+            "Dificultad", "Estándar", "está seleccionada la dificultad «{0}»: cambia la partida para todo el escuadrón. Elige una dificultad del juego para usar el emparejamiento.",
         },
         ["es-mx"] = new[]
         {
@@ -165,7 +166,7 @@ internal static class Strings
             "Haz clic y la ruleta elegirá un mago desbloqueado al azar.",
             "El mago se sortea al empezar la partida. Hasta entonces, la sala muestra tu mago anterior; solo tú ves magos al azar parpadear en tu lugar.",
             "Qué es aleatorio", "Cada parámetro", "Dificultad base", "Elegido: sabrás quién es al empezar la partida",
-            "Dificultad", "Estándar",
+            "Dificultad", "Estándar", "está seleccionada la dificultad «{0}»: cambia la partida para todo el escuadrón. Elige una dificultad del juego para usar el emparejamiento.",
         },
         ["ja"] = new[]
         {
@@ -177,7 +178,7 @@ internal static class Strings
             "クリックするとルーレットが解放済みの魔法使いをランダムに選びます。",
             "魔法使いはラン開始時にランダムで決まります。それまでロビーには前の魔法使いが表示され、あなたの席でだけランダムな魔法使いが切り替わります。",
             "ランダムの対象", "各項目", "基本難易度", "選択済み — 誰になるかはラン開始時に分かります",
-            "難易度", "標準",
+            "難易度", "標準", "難易度「{0}」が選ばれています：部隊全員のランが変わります。マッチングを使うにはゲームの難易度を選んでください。",
         },
         ["ko"] = new[]
         {
@@ -189,7 +190,7 @@ internal static class Strings
             "클릭하면 룰렛이 해금한 마법사 중 하나를 무작위로 골라 줍니다.",
             "마법사는 런이 시작될 때 무작위로 정해집니다. 그때까지 로비에는 이전 마법사가 보이며, 내 자리에서만 무작위 마법사가 번갈아 나타납니다.",
             "무작위 대상", "각 항목", "기본 난이도", "선택됨 — 누구인지는 런이 시작될 때 알 수 있습니다",
-            "난이도", "기본",
+            "난이도", "기본", "'{0}' 난이도가 선택되어 있습니다: 분대 전체의 런이 바뀝니다. 매칭을 쓰려면 게임 기본 난이도를 고르세요.",
         },
         ["zh-hans"] = new[]
         {
@@ -201,7 +202,7 @@ internal static class Strings
             "点击后，轮盘会为你随机选出一位已解锁的法师。",
             "法师将在对局开始时随机决定。在此之前大厅显示你之前的法师——只有你会看到自己座位上随机法师轮流闪现。",
             "随机内容", "每项数值", "基础难度", "已选择——对局开始时揭晓是谁",
-            "难度", "标准",
+            "难度", "标准", "已选择「{0}」难度：它会改变全队的本局。选择游戏自带的难度才能使用匹配。",
         },
         ["zh-hant"] = new[]
         {
@@ -213,7 +214,7 @@ internal static class Strings
             "點擊後，輪盤會為你隨機選出一位已解鎖的法師。",
             "法師將在對局開始時隨機決定。在此之前大廳顯示你之前的法師——只有你會看到自己座位上隨機法師輪流閃現。",
             "隨機內容", "每項數值", "基礎難度", "已選擇——對局開始時揭曉是誰",
-            "難度", "標準",
+            "難度", "標準", "已選擇「{0}」難度：它會改變全隊的本局。選擇遊戲內建的難度才能使用配對。",
         },
         ["th"] = new[]
         {
@@ -225,7 +226,7 @@ internal static class Strings
             "คลิกแล้ววงล้อจะสุ่มเลือกนักเวทย์ที่ปลดล็อกแล้วให้คุณ",
             "นักเวทย์จะถูกสุ่มเมื่อเริ่มรอบ ระหว่างนั้นล็อบบี้จะแสดงนักเวทย์คนเดิม — มีเพียงคุณที่เห็นนักเวทย์สุ่มสลับไปมาที่ที่นั่งของคุณ",
             "อะไรที่สุ่ม", "ทุกค่า", "ความยากพื้นฐาน", "เลือกแล้ว — จะรู้ว่าเป็นใครเมื่อเริ่มรอบ",
-            "ความยาก", "มาตรฐาน",
+            "ความยาก", "มาตรฐาน", "เลือกความยาก “{0}” อยู่: มันเปลี่ยนรอบของทั้งหน่วย เลือกความยากของเกมเพื่อใช้การจับคู่",
         },
     };
 

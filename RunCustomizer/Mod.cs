@@ -7,7 +7,7 @@ using MelonLoader.Preferences;
 using SpellBrigade.Shared;
 using UnityEngine;
 
-[assembly: MelonInfo(typeof(RunCustomizer.RunCustomizerMod), "Run Customizer", "1.1.1", "Relsev")]
+[assembly: MelonInfo(typeof(RunCustomizer.RunCustomizerMod), "Run Customizer", "1.1.2", "Relsev")]
 [assembly: MelonGame("BoltBlasterGames", "TheSpellBrigade")]
 [assembly: MelonOptionalDependencies("ModMenu")] // без Mod Menu мод работает как раньше
 
@@ -46,6 +46,9 @@ public class RunCustomizerMod : MelonMod
 
         ApplyPatches();
         Log.Msg($"{_hooksInstalled}/{_hooksTotal} hooks — difficulty mode: {Modes.Selected}");
+        // своя/случайная сложность — у всего отряда; с ней без подбора, только друзья
+        MatchmakingGuard.Register(HarmonyInstance, Log, "Run Customizer", () => Modes.Selected == Mode.Vanilla ? null
+            : string.Format(Strings.Get(Strings.Matchmaking), Strings.Get(Modes.Selected == Mode.Custom ? Strings.CustomName : Strings.RandomName)));
 
         if (FindMelon("Mod Menu", "Relsev") != null)
             try { MenuPage.Register(); }
@@ -62,6 +65,7 @@ public class RunCustomizerMod : MelonMod
     public override void OnUpdate()
     {
         WheelSelect.Tick(); // колесо мыши над «< значение >» листает варианты
+        MatchmakingGuard.Tick();
         if (Time.unscaledTime < _nextLobbySync) return;
         _nextLobbySync = Time.unscaledTime + 0.5f;
         try { Modes.SyncLobby(); }

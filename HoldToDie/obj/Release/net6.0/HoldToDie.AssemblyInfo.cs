@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HoldToDie")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1566233baf0b4e4453bc0696be73827f74ea9253")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1856b18f4bf94ea33a9b586b39e9ee6f647e5453")]
 [assembly: System.Reflection.AssemblyProductAttribute("HoldToDie")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HoldToDie")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -2,7 +2,7 @@
 
 *Earn more gold, level faster and rank up your wizards — all configurable.*
 
-Version 2.6.1 · The Spell Brigade 1.1.4 · MelonLoader 0.7
+Version 2.6.2 · The Spell Brigade 1.1.4 · MelonLoader 0.7
 
 ## Features
 
@@ -57,6 +57,10 @@ Yes, including Keybinds Unlocked — both add their own things to the Options me
 English, Русский, Українська, Deutsch, Français, Italiano, Nederlands, Polski, Português (Brasil), Português (Portugal), Español (España), Español (México), 日本語, 한국어, 简体中文, 繁體中文, ไทย
 
 ## Changelog
+
+**2.6.2**
+
+- Matchmaking is locked while the run XP multiplier isn't x1 — it changes XP for the whole team, so players without the mod can't land in your runs. The Matchmaking switch is locked and the matchmaking window explains why; friends can still join by invite or lobby code
 
 **2.6.1**
 
