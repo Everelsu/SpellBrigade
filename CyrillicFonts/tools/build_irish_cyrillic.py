@@ -84,7 +84,7 @@ def width(rec): b = bounds(rec); return b[2] - b[0]
 STEM = 150  # толщина штриха Irish Grover примерно
 
 # ---------- ЗАГЛАВНЫЕ ----------
-for cyr, lat in zip('АВЕКМНОРСТХЁ', 'ABEKMHOPCTXË'): alias(ord(cyr), lat)
+for cyr, lat in zip('АВЕКМНОРСТХЁІЇ', 'ABEKMHOPCTXËIÏ'): alias(ord(cyr), lat)
 
 def flipped(rec):
     """Переворот по вертикали в своей рамке (с исправлением направления контуров)."""
@@ -96,6 +96,12 @@ def clip(rec, x0, y0, x1, y1):
     a = pathops.Path(); rec.replay(a.getPen())
     b = pathops.Path(); bar(x0, y0, x1, y1).replay(b.getPen())
     out = RecordingPen(); pathops.op(a, b, pathops.PathOp.INTERSECTION).draw(out); return out
+
+def union(rec):
+    """Слить наложенные части в один чистый контур."""
+    p = pathops.Path(); rec.replay(p.getPen())
+    p.simplify(fix_winding=True)
+    out = RecordingPen(); p.draw(out); return out
 
 caps = {}
 caps['И'] = part('N', flip=True)   # переворот по вертикали: диагональ как у И, засечки ровнее, чем у зеркала
@@ -125,6 +131,11 @@ o = fit(part('O'), CAP * 0.86, bottom=CAP * 0.07)
 caps['Ф'] = merge(o, bar((width(o) - STEM) / 2, -60, (width(o) + STEM) / 2, CAP + 40))
 c = part('C', mirror=True)
 caps['Э'] = merge(c, bar(width(c) * 0.28, CAP * 0.43, width(c) - 40, CAP * 0.43 + STEM * 0.8))
+# Украинские: Є — та же C с перекладиной, только не зеркальная; Ґ — Г с носиком вверх
+c2 = part('C')
+caps['Є'] = merge(c2, bar(40, CAP * 0.43, width(c2) * 0.72, CAP * 0.43 + STEM * 0.8))
+gg = caps['Г']; gx0, _, gx1, gy1 = bounds(gg)
+caps['Ґ'] = union(merge(gg, bar(gx1 - STEM * 0.85, gy1 - 40, gx1 - 15, gy1 + 150)))
 # Й = И + бреве над ним
 br = fit(part('˘'), 120)
 i_ = caps['И']
@@ -146,11 +157,7 @@ caps['Щ'] = with_tail(caps['Ш'])
 caps['Ц'] = with_tail(caps['Ц'])
 # Д: «крыша» Λ (перевёрнутая V) на перекладине, ножки вниз. Расширенные концы ног V
 # оставляли щели над перекладиной — закрываем их и сливаем всё в один контур
-def union(rec):
-    p = pathops.Path(); rec.replay(p.getPen())
-    p.simplify(fix_winding=True)
-    out = RecordingPen(); p.draw(out); return out
-lam = fit(part('V', flip=True), CAP * 0.88, bottom=CAP * 0.12); lw = width(lam)
+lam =fit(part('V', flip=True), CAP * 0.88, bottom=CAP * 0.12); lw = width(lam)
 roof = place(lam, (60, CAP * 0.12, 60 + lw, CAP))
 rx0, _, rx1, _ = bounds(roof)
 caps['Д'] = union(merge(roof, bar(0, 0, lw + 120, STEM * 0.9),
@@ -160,11 +167,12 @@ caps['Д'] = union(merge(roof, bar(0, 0, lw + 120, STEM * 0.9),
 for ch, rec in caps.items(): add(ord(ch), rec)
 
 # ---------- СТРОЧНЫЕ ----------
-for cyr, lat in zip('аеорсухёп', 'aeopcyxën'): alias(ord(cyr), lat)
+for cyr, lat in zip('аеорсухёпії', 'aeopcyxënii'): alias(ord(cyr), lat)
+alias(ord('ї'), 'ï')
 add(ord('б'), fit(part('6'), CAP))
 SMALL = XH / CAP
 def small(rec): b = bounds(rec); return place(rec, (0, b[1] * SMALL, (b[2] - b[0]) * SMALL * 1.08, b[3] * SMALL))
-smallcaps = 'вгджзийклмнтфцчшщъыьэюя'
+smallcaps = 'вгджзийклмнтфцчшщъыьэюяєґ'
 for low in smallcaps:
     up = low.upper()
     src = caps.get(up)
