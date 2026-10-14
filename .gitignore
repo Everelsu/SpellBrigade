@@ -1,2 +1,21 @@
-.github/art/logo.html
+# Сборка (dotnet build) — всегда пересобирается
+bin/
+obj/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.suo
+
+# Готовые архивы: собираются из bin (Nexus — */nexus/*.zip, Thunderstore — pack-thunderstore.ps1),
+# лежат на Nexus / Thunderstore, в репозитории не нужны
+*.zip
 /release
+
+# Python (скрипты в CyrillicFonts/tools)
+__pycache__/
+*.pyc
+
+# Исходник логотипа для README
+.github/art/logo.html

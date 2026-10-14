@@ -1,0 +1,99 @@
+[center][size=6][b][color=#f5c542]Cyrillic Fonts[/color][/b][/size]
+[size=3][i]The game's own fonts — now with Cyrillic. Russian and Ukrainian finally look like the rest of the game.[/i][/size]
+
+[size=2]Version 1.0.0 · The Spell Brigade 1.2 · MelonLoader 0.7[/size][/center]
+
+[line]
+
+[size=5][b][color=#f5c542]The problem[/color][/b][/size]
+
+The game's fonts — [b]Irish Grover[/b] for headings and buttons, [b]Titillium Web[/b] for everything else — have no Cyrillic letters. So in Russian and Ukrainian every text falls back to a plain default font: "OPTIONS" becomes a thin "НАСТРОЙКИ", "READY" turns into an ordinary "ГОТОВ", and the menus lose their character.
+
+[line]
+
+[size=5][b][color=#f5c542]What the mod does[/color][/b][/size]
+
+[list]
+[*][b]Headings and buttons in Irish Grover[/b] — Cyrillic letters built from the font's own glyphs: shared shapes are reused as-is (А, В, Е, К, М, Н, О, Р, С, Т, Х), the rest are mirrored, flipped and assembled from its own strokes and serifs (И, Я, Г, П, Ж, Ш, Д…).
+[*][b]All other text in Titillium Web[/b] — the very same font the game uses, with Cyrillic added (Titillium Web [RUS by Daymarius]). Every weight is matched: ExtraLight, Light, Regular, SemiBold, Bold.
+[*][b]Latin stays original[/b] — the mod only fills in letters the game's fonts are missing, so English and other Latin-script languages don't change at all.
+[*][b]Russian and Ukrainian[/b] — all letters including Ё, Ґ, Є, І, Ї.
+[*][b]Same size and outline[/b] — Cyrillic is scaled to the height of the original capitals and uses the game's own text shader, so outlines and shadows look the same.
+[/list]
+
+[line]
+
+[size=5][b][color=#f5c542]Installation[/color][/b][/size]
+
+[list=1]
+[*]Install [url=https://github.com/LavaGang/MelonLoader/releases]MelonLoader[/url] (0.7.x) for The Spell Brigade and launch the game once.
+[*]Put [b]CyrillicFonts.dll[/b] into [font=Courier New]<Game folder>\Mods\[/font] (the fonts are inside the dll).
+[*]Launch the game with the Russian or Ukrainian language.
+[/list]
+
+[b]Settings[/b] are in [font=Courier New]UserData\MelonPreferences.cfg[/font], section [font=Courier New][CyrillicFonts][/font]: [b]Enabled[/b], and [b]HeadingScale[/b] / [b]TextScale[/b] to make Cyrillic a bit bigger or smaller if you prefer.
+
+[line]
+
+[size=5][b][color=#f5c542]FAQ[/color][/b][/size]
+
+[b]Does it change anything in English?[/b]
+No. The added letters are only used where the game's fonts have none.
+
+[b]Does it work in co-op?[/b]
+Yes. It's purely visual and local; other players don't need it.
+
+[b]How do I uninstall?[/b]
+Delete [b]CyrillicFonts.dll[/b] from the Mods folder (and, if you like, the [font=Courier New]UserData\CyrillicFonts[/font] folder).
+
+[line]
+
+[size=5][b][color=#f5c542]Fonts and licenses[/color][/b][/size]
+
+[list]
+[*][b]Irish Grover[/b] © 2010 Font Diner, Inc DBA Sideshow — Apache License 2.0. [b]Modified[/b]: Cyrillic letters added from the font's own glyphs; the Latin letters are unchanged. Distributed as "Irish Grover Cyrillic".
+[*][b]Titillium Web[/b] © 2009–2011 Accademia di Belle Arti di Urbino and students of the MA course of Visual design; Cyrillization by [b]Daymarius[/b] — SIL Open Font License 1.1.
+[/list]
+The full license texts come with the mod in [font=Courier New]CyrillicFonts-FONTS-LICENSE.txt[/font].
+
+[line]
+
+[size=5][b][color=#f5c542]Changelog[/color][/b][/size]
+
+[b]1.0.0[/b]
+[list]
+[*]Initial release
+[/list]
+
+[line]
+
+[spoiler]
+[size=5][b]Описание на русском[/b][/size]
+
+[b]Cyrillic Fonts[/b] — родные шрифты игры с кириллицей. Русский и украинский наконец выглядят как остальная игра.
+
+[b]Проблема[/b]
+В шрифтах игры — [b]Irish Grover[/b] у заголовков и кнопок и [b]Titillium Web[/b] у остального текста — нет кириллицы. Поэтому на русском и украинском весь текст подменяется простым запасным шрифтом: «OPTIONS» превращается в тонкие «НАСТРОЙКИ», «READY» — в обычное «ГОТОВ», и меню теряют характер.
+
+[b]Что делает мод[/b]
+[list]
+[*][b]Заголовки и кнопки — Irish Grover[/b]: кириллица собрана из глифов самого шрифта. Общие с латиницей буквы взяты как есть, остальные отзеркалены, перевёрнуты и собраны из его же штрихов и засечек.
+[*][b]Остальной текст — Titillium Web[/b], тот же шрифт, что в игре, с кириллицей (Titillium Web [RUS by Daymarius]), все толщины.
+[*][b]Латиница не меняется[/b] — мод добавляет только недостающие буквы, английский и другие языки на латинице остаются как были.
+[*][b]Русский и украинский[/b] — все буквы, включая Ё, Ґ, Є, І, Ї.
+[*][b]Тот же размер и обводка[/b] — кириллица подогнана по высоте заглавных и рисуется шейдером игры.
+[/list]
+
+[b]Установка[/b]
+[list=1]
+[*]Установите [url=https://github.com/LavaGang/MelonLoader/releases]MelonLoader[/url] 0.7.x и один раз запустите игру.
+[*]Положите [b]CyrillicFonts.dll[/b] в папку [font=Courier New]<папка игры>\Mods\[/font] — шрифты внутри dll.
+[*]Запустите игру на русском или украинском.
+[/list]
+
+[b]Настройки[/b] — в [font=Courier New]UserData\MelonPreferences.cfg[/font], раздел [font=Courier New][CyrillicFonts][/font]: Enabled, HeadingScale / TextScale (размер кириллицы, если хочется крупнее или мельче).
+
+[b]Шрифты и лицензии:[/b] Irish Grover (Font Diner, Apache 2.0, дополнен кириллицей), Titillium Web (Accademia di Belle Arti di Urbino, кириллизация — Daymarius, SIL OFL 1.1). Полные тексты лицензий — в файле рядом с dll.
+
+[b]Удаление:[/b] удалите DLL из папки Mods (и при желании папку [font=Courier New]UserData\CyrillicFonts[/font]).
+[/spoiler]

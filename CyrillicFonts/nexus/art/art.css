@@ -1,0 +1,16 @@
+/* Шрифты — настоящие, из мода: оригинал Irish Grover, наша кириллица, Titillium с кириллицей */
+@font-face { font-family: "IrishGrover"; src: url("../../tools/IrishGrover-Regular.ttf"); }
+@font-face { font-family: "IrishGroverCyr"; src: url("../../Fonts/IrishGroverCyrillic-Regular.ttf"); }
+@font-face { font-family: "TitilliumRus"; src: url("../../Fonts/titilliumwebrusbydaymarius_sm.ttf"); font-weight: 600; }
+@font-face { font-family: "TitilliumRus"; src: url("../../Fonts/titilliumwebrusbydaymarius_bd.ttf"); font-weight: 700; }
+
+:root { --gold: #f2c14e; --ink: #eef0f7; --night: #070b1c; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; background: var(--night); overflow: hidden; }
+.canvas { position: relative; width: 100%; height: 100%; overflow: hidden; }
+.scene { position: absolute; inset: 0; background: url("menu_clean.png") no-repeat; background-size: cover; }
+.shade { position: absolute; inset: 0; }
+.ig { font-family: "IrishGroverCyr", "IrishGrover"; color: var(--ink); line-height: 1; text-shadow: 0 3px 22px rgba(0, 0, 0, .5); }
+.plain { font-family: "Segoe UI", sans-serif; font-weight: 300; color: rgba(238, 240, 247, .55); line-height: 1; }
+.sub { font-family: "TitilliumRus", sans-serif; font-weight: 600; color: rgba(238, 240, 247, .75); letter-spacing: .12em; text-transform: uppercase; }
+.gold { color: var(--gold); }

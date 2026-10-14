@@ -186,8 +186,11 @@ SpellBrigade/
 ├── PinnedChallenges/   Pinned Challenges
 ├── RunCustomizer/      Run Customizer (Icons/ are embedded into the DLL)
 ├── SkipIntro/          Skip Intro
-├── Shared/             Code compiled into every mod: safe hooks, SharedCodeGuard, localization, mouse wheel
-├── */nexus/            Nexus Mods page kit: description, thumbnail, header, release zip
+├── HoldToDie/          Hold to Die
+├── CyrillicFonts/      Cyrillic Fonts (Fonts/ are embedded into the DLL; tools/ builds Irish Grover Cyrillic)
+├── Shared/             Code compiled into every mod: safe hooks, SharedCodeGuard, localization, mouse wheel,
+│                       matchmaking lock for mods that change the run for everyone
+├── */nexus/            Nexus Mods page kit: description, thumbnail, header (release zips are built locally, not in git)
 └── */thunderstore/     Thunderstore manifest, README, icon; pack-thunderstore.ps1 builds the zips
 ```
 

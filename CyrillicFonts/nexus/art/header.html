@@ -1,0 +1,22 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="art.css">
+<style>
+  .scene { background-position: 50% 15%; }
+  .shade { background: linear-gradient(90deg, rgba(6, 9, 20, .92) 0%, rgba(6, 9, 20, .72) 50%, rgba(6, 9, 20, .6) 100%); }
+  .content { position: absolute; inset: 0; padding: 0 90px 0 80px; display: flex; align-items: center; justify-content: space-between; }
+  .title { font-size: 92px; }
+  .cmp { display: grid; grid-template-columns: auto auto; column-gap: 26px; row-gap: 10px; align-items: center; }
+  .label { font-size: 20px; text-align: right; }
+  .before { font-size: 64px; text-decoration: line-through; text-decoration-color: rgba(224, 122, 106, .8); text-decoration-thickness: 4px; }
+  .after { font-size: 80px; }
+</style></head>
+<body><div class="canvas">
+  <div class="scene"></div><div class="shade"></div>
+  <div class="content">
+    <div class="ig title">Cyrillic Fonts</div>
+    <div class="cmp">
+      <div class="sub label">без мода</div><div class="plain before">НАСТРОЙКИ</div>
+      <div class="sub label gold">с модом</div><div class="ig after">НАСТРОЙКИ</div>
+    </div>
+  </div>
+</div></body></html>
