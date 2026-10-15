@@ -1,14 +1,16 @@
 Cyrillic Fonts — шрифты внутри мода / fonts bundled with the mod
 ===============================================================
 
-Irish Grover Cyrillic (IrishGroverCyrillic-Regular.ttf)
+Irish Grover Cyrillic (IrishGroverCyrillic-Classic.ttf, -Hybrid.ttf, -Drawn.ttf)
   Based on Irish Grover: Copyright (c) 2010 by Font Diner, Inc DBA Sideshow. All rights reserved.
   License: Apache License, Version 2.0 (full text at the end of this file).
   MODIFIED by the Cyrillic Fonts mod: Cyrillic letters (Russian U+0401, U+0410-U+044F, U+0451 and
   Ukrainian U+0404, U+0406, U+0407, U+0454, U+0456, U+0457, U+0490, U+0491) were added,
-  built only from the font's own glyphs (reused, mirrored, flipped, combined and scaled).
+  partly built from the font's own glyphs (reused, mirrored, flipped, combined and scaled) and
+  partly traced from an original hand-drawn Cyrillic alphabet made for this mod.
   The family name was changed to "Irish Grover Cyrillic". The original Latin glyphs are unchanged.
-  The build script is published with the mod's source: CyrillicFonts/tools/build_irish_cyrillic.py
+  The build scripts are published with the mod's source: CyrillicFonts/tools/build_irish_cyrillic.py,
+  trace_alphabet.py and build_hybrid.py.
 
 Titillium Web [RUS by Daymarius] (titilliumwebrusbydaymarius_*.ttf)
   Copyright (c) 2009-2011 by Accademia di Belle Arti di Urbino and students of MA course of Visual design.

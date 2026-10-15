@@ -149,7 +149,7 @@
 <div class="wrap">
   <header>
     <div class="eyebrow">Nexus Mods · The Spell Brigade · новый мод</div>
-    <h1>Cyrillic Fonts <span class="x">1.0.0</span></h1>
+    <h1>Cyrillic Fonts <span class="x">1.1.0</span></h1>
     <p class="lede">Всё, чтобы создать страницу мода: поля для заполнения, описание в BBCode с предпросмотром и порядок действий. Кнопка «Копировать» кладёт текст в буфер обмена, дальше вставляете в редактор Nexus.</p>
   </header>
 
@@ -170,7 +170,7 @@
 
       <div class="field">
         <div class="field-head"><span class="field-name">Версия</span><button class="copy" data-copy="f-version">Копировать</button></div>
-        <div class="field-value mono" id="f-version">1.0.0</div>
+        <div class="field-value mono" id="f-version">1.1.0</div>
       </div>
 
       <div class="field">
@@ -191,8 +191,10 @@
       </div>
 
       <div class="field">
-        <div class="field-head"><span class="field-name">Changelog 1.0.0</span><button class="copy" data-copy="f-changelog">Копировать</button></div>
-        <div class="field-value" id="f-changelog">Первый выпуск</div>
+        <div class="field-head"><span class="field-name">Changelog 1.1.0</span><button class="copy" data-copy="f-changelog">Копировать</button></div>
+        <div class="field-value" id="f-changelog">Три вида кириллицы в заголовках: Гибрид (новый, по умолчанию) — общие с латиницей буквы от Irish Grover, остальные нарисованы от руки; Классика — как в 1.0.0; Рисованный — весь алфавит от руки
+Вид шрифта и размер кириллицы меняются прямо в игре через Mod Menu (Настройки → Mods → Cyrillic Fonts), без перезапуска
+Новая настройка HeadingStyle в MelonPreferences.cfg (Hybrid / Classic / Drawn)</div>
       </div>
     </aside>
 
@@ -210,7 +212,7 @@
       <ol class="steps">
         <li><div><b>Upload → Add mod:</b> игра The Spell Brigade, название, Summary, версия и категория — значения слева.</div></li>
         <li><div><b>Description:</b> переключите редактор в режим BBCode (значок <span class="path">[ ]</span>) и вставьте описание.</div></li>
-        <li><div><b>Files:</b> загрузите <span class="path">CyrillicFonts-1.0.0.zip</span> как Main file, версия 1.0.0.</div></li>
+        <li><div><b>Files:</b> загрузите <span class="path">CyrillicFonts-1.1.0.zip</span> как Main file, версия 1.1.0.</div></li>
         <li><div><b>Requirements:</b> добавьте MelonLoader как off-site требование.</div></li>
         <li><div><b>Images:</b> <span class="path">thumbnail.png</span> (1280×720) — основное изображение (Primary), <span class="path">header.png</span> (1400×400) — шапка страницы (Header). Скриншоты «до/после» на русском (настройки, лобби, итоги забега) будут очень кстати.</div></li>
         <li><div><b>По желанию:</b> в Permissions отметьте, что в моде есть чужие шрифты (Irish Grover — Apache 2.0, Titillium Web — SIL OFL), их авторы указаны в описании.</div></li>
@@ -218,7 +220,7 @@
 
       <h2 style="margin-top:18px">Файлы на диске</h2>
       <div class="files">
-        <div class="file"><code>C:\Dev\SpellBrigade\CyrillicFonts\nexus\CyrillicFonts-1.0.0.zip</code><span>архив для загрузки</span></div>
+        <div class="file"><code>C:\Dev\SpellBrigade\CyrillicFonts\nexus\CyrillicFonts-1.1.0.zip</code><span>архив для загрузки</span></div>
         <div class="file"><code>C:\Dev\SpellBrigade\CyrillicFonts\nexus\description.bbcode</code><span>описание</span></div>
         <div class="file"><code>C:\Dev\SpellBrigade\CyrillicFonts\nexus\thumbnail.png</code><span>основное изображение, 1280×720</span></div>
         <div class="file"><code>C:\Dev\SpellBrigade\CyrillicFonts\nexus\header.png</code><span>шапка страницы, 1400×400</span></div>
@@ -231,7 +233,7 @@
 [center][size=6][b][color=#f5c542]Cyrillic Fonts[/color][/b][/size]
 [size=3][i]Родные шрифты игры — теперь с кириллицей. Русский язык наконец выглядит как остальная игра.[/i][/size]
 
-[size=2]Версия 1.0.0 · The Spell Brigade 1.2 · MelonLoader 0.7[/size][/center]
+[size=2]Версия 1.1.0 · The Spell Brigade 1.2 · MelonLoader 0.7[/size][/center]
 
 [line]
 
@@ -244,7 +246,12 @@
 [size=5][b][color=#f5c542]Что делает мод[/color][/b][/size]
 
 [list]
-[*][b]Заголовки и кнопки — Irish Grover, как в английской версии.[/b] Кириллица собрана из букв самого шрифта: общие с латиницей (А, В, Е, К, М, Н, О, Р, С, Т, Х) взяты как есть, остальные отзеркалены, перевёрнуты и собраны из его же штрихов и засечек (И, Я, Г, П, Ж, Ш, Д…).
+[*][b]Заголовки и кнопки — Irish Grover, как в английской версии.[/b] Три вида кириллицы на выбор:
+[list]
+[*][b]Гибрид[/b] (по умолчанию) — общие с латиницей буквы (А, В, Е, К, М, Н, О, Р, С, Т, Х) от Irish Grover, остальные нарисованы от руки в его стиле;
+[*][b]Классика[/b] — вся кириллица собрана из букв самого Irish Grover: отзеркалена, перевёрнута и сложена из его штрихов и засечек;
+[*][b]Рисованный[/b] — весь алфавит нарисован от руки.
+[/list]
 [*][b]Остальной текст — Titillium Web, тот же шрифт, что в игре,[/b] только с кириллицей (Titillium Web [RUS by Daymarius]). Подобрана каждая толщина: от тонкой до жирной.
 [*][b]Латиница не меняется.[/b] Мод добавляет только недостающие буквы — английский и другие языки на латинице остаются как были.
 [*][b]Тот же размер и обводка.[/b] Кириллица подогнана по высоте заглавных букв оригинала и рисуется шейдером игры — обводки и тени такие же.
@@ -261,9 +268,10 @@
 [*]Запустите игру на русском языке.
 [/list]
 
-[b]Настройки[/b] — в [font=Courier New]UserData\MelonPreferences.cfg[/font], раздел [font=Courier New][CyrillicFonts][/font]:
+[b]Настройки[/b] — прямо в игре через [url=https://www.nexusmods.com/thespellbrigade/mods/16]Mod Menu[/url] ([b]Настройки → Mods → Cyrillic Fonts[/b], вид шрифта меняется сразу) или в [font=Courier New]UserData\MelonPreferences.cfg[/font], раздел [font=Courier New][CyrillicFonts][/font]:
 [list]
 [*][b]Enabled[/b] — включить или выключить мод;
+[*][b]HeadingStyle[/b] — вид кириллицы в заголовках: Hybrid, Classic или Drawn;
 [*][b]HeadingScale[/b] и [b]TextScale[/b] — размер кириллицы в заголовках и в остальном тексте (1 — подобран автоматически), если хочется чуть крупнее или мельче.
 [/list]
 
@@ -293,6 +301,13 @@
 [line]
 
 [size=5][b][color=#f5c542]Список изменений[/color][/b][/size]
+
+[b]1.1.0[/b]
+[list]
+[*]Три вида кириллицы в заголовках: Гибрид (новый, по умолчанию) — общие с латиницей буквы от Irish Grover, остальные нарисованы от руки; Классика — как в 1.0.0; Рисованный — весь алфавит от руки
+[*]Вид шрифта и размер кириллицы меняются прямо в игре через Mod Menu (Настройки → Mods → Cyrillic Fonts), без перезапуска
+[*]Новая настройка HeadingStyle в MelonPreferences.cfg (Hybrid / Classic / Drawn)
+[/list]
 
 [b]1.0.0[/b]
 [list]

@@ -1,5 +1,5 @@
 # Кириллица для Irish Grover (Apache 2.0) из его же глифов: заимствование похожих латинских,
-# зеркала/перевороты и сборка из частей. Результат — IrishGroverCyrillic-Regular.ttf.
+# зеркала/перевороты и сборка из частей. Результат — IrishGroverCyrillic-Classic.ttf.
 # Запуск из этой папки: python build_irish_cyrillic.py [выход.ttf] [исходный IrishGrover.ttf]
 # (нужен fontTools: pip install fonttools)
 import sys
@@ -11,7 +11,7 @@ from fontTools.pens.ttGlyphPen import TTGlyphPen
 from fontTools.pens.reverseContourPen import ReverseContourPen
 import pathops  # pip install skia-pathops — вырезать кусок глифа (основание Д)
 
-OUT = sys.argv[1] if len(sys.argv) > 1 else '../Fonts/IrishGroverCyrillic-Regular.ttf'
+OUT = sys.argv[1] if len(sys.argv) > 1 else '../Fonts/IrishGroverCyrillic-Classic.ttf'
 SRC = sys.argv[2] if len(sys.argv) > 2 else 'IrishGrover-Regular.ttf'  # оригинал из игры (Apache 2.0)
 f = TTFont(SRC)
 gs = f.getGlyphSet()

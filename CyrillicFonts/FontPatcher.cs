@@ -13,6 +13,7 @@ namespace CyrillicFonts;
 internal static class FontPatcher
 {
     private static readonly HashSet<IntPtr> Patched = new();
+    private static readonly List<(TMP_FontAsset original, TMP_FontAsset cyrillic)> Inserted = new();
     private static readonly Dictionary<string, TMP_FontAsset> Created = new(); // путь файла + шейдер → наш шрифт
 
     // Имя шрифта игры → роль, толщина, курсив
@@ -54,10 +55,30 @@ internal static class FontPatcher
                 asset.fallbackFontAssetTable = fallbacks;
             }
             fallbacks.Insert(0, cyrillic);
+            Inserted.Add((asset, cyrillic));
             any = true;
             CyrillicFontsMod.Log.Msg($"{asset.name} ← {System.IO.Path.GetFileName(face.Path)}");
         }
         if (any) RefreshTexts();
+    }
+
+    // Сменился вид или размер: меняем нашу кириллицу в запасных шрифтах на новую и перерисовываем тексты
+    public static void Reapply()
+    {
+        for (int i = 0; i < Inserted.Count; i++)
+        {
+            var (original, old) = Inserted[i];
+            if (original == null) continue;
+            if (!Describe(original.name, out var role, out int weight, out bool italic)) continue;
+            var face = FontFiles.Pick(role, weight, italic);
+            var cyrillic = face != null ? Create(face, original) : null;
+            if (cyrillic == null) continue;
+            var fallbacks = original.fallbackFontAssetTable;
+            fallbacks.Remove(old);
+            fallbacks.Insert(0, cyrillic);
+            Inserted[i] = (original, cyrillic);
+        }
+        RefreshTexts();
     }
 
     private static TMP_FontAsset Create(FontFiles.Face face, TMP_FontAsset original)

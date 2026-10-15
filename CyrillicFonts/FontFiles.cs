@@ -17,6 +17,7 @@ internal static class FontFiles
         public Role Role;
         public int Weight;   // OS/2 usWeightClass: 300 Light, 400 Regular, 600 SemiBold, 700 Bold, 900 Black
         public bool Italic;
+        public string Style; // для заголовков: вид из имени файла (IrishGroverCyrillic-Hybrid.ttf → Hybrid)
     }
 
     public static readonly List<Face> Faces = new();
@@ -51,7 +52,9 @@ internal static class FontFiles
             if (role == null) { CyrillicFontsMod.Log.Warning($"{name}: unknown font, skipped"); continue; }
 
             var (weight, italic) = ReadStyle(bytes);
-            Faces.Add(new Face { Path = path, Role = role.Value, Weight = weight, Italic = italic });
+            string style = System.IO.Path.GetFileNameWithoutExtension(name);
+            style = style.Substring(style.LastIndexOf('-') + 1);
+            Faces.Add(new Face { Path = path, Role = role.Value, Weight = weight, Italic = italic, Style = style });
             CyrillicFontsMod.Log.Msg($"font {name}: {role}, weight {weight}{(italic ? ", italic" : "")}");
         }
         return Faces.Count;
@@ -89,6 +92,8 @@ internal static class FontFiles
         {
             if (face.Role != role) continue;
             int score = Math.Abs(face.Weight - weight) + (face.Italic == italic ? 0 : 50);
+            if (role == Role.Heading && !string.Equals(face.Style, CyrillicFontsMod.HeadingStyleEntry.Value.ToString(), StringComparison.OrdinalIgnoreCase))
+                score += 1000; // не тот вид — только если нужного файла нет
             if (score < bestScore) { best = face; bestScore = score; }
         }
         return best;
